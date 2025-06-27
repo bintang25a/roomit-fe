@@ -27,25 +27,25 @@ export default function Home() {
             </div>
             <div className="main">
                <div className="container">
-                  <Link to={"/rooms/booking"} className="card">
+                  <Link to={"/booking"} className="card">
                      <div className="icon">
                         <HiOutlineDocumentText />
                      </div>
                      <h1>Submited request</h1>
                   </Link>
-                  <Link to={"/rooms/booking"} className="card">
+                  <Link to={"/booking"} className="card">
                      <div className="icon">
                         <FaRegQuestionCircle />
                      </div>
                      <h1>Approval status</h1>
                   </Link>
-                  <Link to={"/rooms/booking"} className="card">
+                  <Link to={"/booking"} className="card">
                      <div className="icon">
                         <TbDoor />
                      </div>
                      <h1>Booked room</h1>
                   </Link>
-                  <Link to={"/rooms/booking"} className="card">
+                  <Link to={"/booking"} className="card">
                      <div className="icon">
                         <MdChecklist />
                      </div>

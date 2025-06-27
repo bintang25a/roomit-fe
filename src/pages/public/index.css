@@ -182,3 +182,465 @@
       }
    }
 }
+
+.public-layout .booking {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding: var(--px-64);
+
+   > .header {
+      width: 30%;
+      padding-bottom: var(--px-16);
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: var(--px-8);
+
+      h1 {
+         font-size: var(--fs-8);
+         font-weight: 700;
+         color: var(--gray-900);
+      }
+
+      h2 {
+         font-size: var(--fs-5);
+         font-weight: 500;
+         color: var(--gray-700);
+      }
+   }
+
+   > .action {
+      width: 30%;
+      display: flex;
+      gap: var(--px-12);
+      margin-bottom: var(--px-32);
+
+      .btn {
+         flex: 1;
+         background-color: var(--primary);
+         padding: var(--px-8);
+         font-size: var(--fs-3);
+         font-weight: 600;
+         color: var(--white);
+         border-radius: var(--px-8);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: var(--px-8);
+         transition: 0.3s ease;
+
+         .icon {
+            font-size: var(--fs-4);
+         }
+      }
+      .btn:hover {
+         background-color: var(--thirdnary);
+      }
+   }
+
+   .main {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--px-32);
+
+      .card {
+         flex: 1;
+         max-width: 50%;
+         min-width: 25%;
+         background-color: var(--thirdnary);
+         padding: var(--px-16);
+         border-radius: var(--px-16);
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: center;
+         box-shadow: 1px 1px var(--px-8) var(--primary);
+         gap: var(--px-16);
+         cursor: pointer;
+         transition: 0.3s ease;
+
+         .detail {
+            text-align: center;
+
+            h1 {
+               color: var(--gray-100);
+               font-size: var(--fs-7);
+               font-weight: 600;
+               margin-bottom: var(--px-12);
+            }
+
+            img {
+               aspect-ratio: 16/9;
+               border-radius: var(--px-12);
+               object-fit: cover;
+               object-position: top;
+               width: 100%;
+            }
+         }
+
+         .status {
+            width: 100%;
+            text-align: left;
+
+            h2 {
+               font-size: var(--fs-3);
+               font-weight: 600;
+               color: var(--gray-900);
+
+               span {
+                  color: var(--btn-danger);
+                  font-weight: 500;
+               }
+               span.accepted {
+                  color: var(--btn-save);
+               }
+               span.rejected {
+                  color: var(--btn-danger);
+               }
+               span.onprogress {
+                  color: var(--btn-info);
+               }
+            }
+         }
+      }
+      .card:hover {
+         transform: scale(1.025);
+      }
+   }
+}
+
+.public-layout .booking.show,
+.public-layout .rooms.show {
+   .main {
+      margin-top: var(--px-32);
+      border-radius: var(--px-16);
+      background-color: var(--gray-100);
+      padding: var(--px-16);
+      display: flex;
+
+      .left-content {
+         flex: 1;
+         height: fit-content;
+         max-width: 50%;
+         overflow: hidden;
+         border-radius: var(--px-12);
+
+         img {
+            aspect-ratio: 16/9;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: top;
+         }
+      }
+
+      .right-content {
+         flex: 1;
+         max-width: 50%;
+
+         .calender {
+            width: 100%;
+            height: calc(var(--px-256) - var(--px-32));
+            border-top-left-radius: var(--px-16);
+            border-bottom-left-radius: var(--px-16);
+            font-size: var(--fs-3);
+            border: none;
+            overflow: auto;
+         }
+
+         table {
+            width: 100%;
+            table-layout: fixed;
+
+            tr td {
+               padding: calc(var(--px-8) / 2);
+               font-size: var(--fs-4);
+               font-weight: 400;
+            }
+
+            tr td:nth-child(1) {
+               width: 30%;
+               font-weight: 600;
+            }
+
+            tr td:nth-child(2) {
+               width: 5%;
+               font-weight: 600;
+            }
+
+            tr td span {
+               color: var(--btn-info);
+            }
+            tr td span.accepted {
+               color: var(--btn-save);
+            }
+            tr td span.rejected {
+               color: var(--btn-danger);
+            }
+         }
+      }
+   }
+}
+
+.public-layout .booking-add {
+   width: 100%;
+   height: fit-content;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: var(--px-32);
+
+   .container {
+      min-width: 240px;
+      width: fit-content;
+      padding: var(--px-32) var(--px-16);
+      border-radius: var(--px-12);
+      box-shadow: 1px 1px 2px var(--gray-300);
+      background-color: var(--gray-100);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--px-32);
+
+      .header {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         gap: var(--px-8);
+         color: var(--gray-800);
+         border-bottom: 2px solid var(--primary);
+         padding-bottom: var(--px-8);
+
+         img {
+            width: 25%;
+            height: fit-content;
+         }
+
+         h1,
+         h2 {
+            line-height: 1;
+         }
+
+         h1 {
+            font-size: var(--fs-5);
+            font-weight: 700;
+         }
+
+         h2 {
+            font-size: var(--fs-4);
+            font-weight: 400;
+         }
+      }
+
+      .main {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         gap: var(--px-16);
+         border-bottom: 2px solid var(--primary);
+         padding-bottom: var(--px-8);
+
+         .input {
+            width: calc(var(--px-256) * 2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            label {
+               width: 75%;
+               height: 100%;
+               position: absolute;
+               top: 0;
+               left: 0;
+               background-color: var(--secondary);
+               font-size: var(--fs-3);
+               color: var(--gray-800);
+               font-weight: 500;
+               padding: var(--px-8);
+               border-radius: var(--px-8);
+               cursor: text;
+               user-select: none;
+               transition: 0.3s ease;
+            }
+
+            select {
+               cursor: pointer;
+            }
+
+            input,
+            select {
+               width: 100%;
+               background-color: var(--secondary);
+               padding: var(--px-8);
+               border-radius: var(--px-8);
+               font-size: var(--fs-3);
+               font-weight: 500;
+               border: 1px solid var(--secondary);
+               transition: 0.3s ease;
+            }
+
+            input:focus {
+               border-color: var(--primary);
+               box-shadow: 1px 1px var(--px-12) var(--primary);
+            }
+            input:valid + label,
+            input:focus + label {
+               width: 50%;
+               opacity: 0;
+               transform: translateX(50%);
+            }
+         }
+         .input:hover input {
+            box-shadow: 1px 1px var(--px-12) var(--primary);
+         }
+      }
+
+      .footer {
+         width: 100%;
+
+         .btn {
+            width: 100%;
+            background-color: var(--primary);
+            font-size: var(--fs-4);
+            font-weight: 600;
+            color: var(--gray-100);
+            padding: var(--px-8);
+            border-radius: var(--px-8);
+            transition: 0.3s ease;
+            cursor: pointer;
+         }
+         .btn:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+         }
+      }
+   }
+}
+
+.public-layout .rooms {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding: var(--px-64);
+
+   > .header {
+      width: 30%;
+      padding-bottom: var(--px-16);
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: var(--px-8);
+
+      h1 {
+         font-size: var(--fs-8);
+         font-weight: 700;
+         color: var(--gray-900);
+      }
+
+      h2 {
+         font-size: var(--fs-5);
+         font-weight: 500;
+         color: var(--gray-700);
+      }
+   }
+
+   > .action {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--px-12);
+      margin-bottom: var(--px-32);
+
+      .search {
+         width: 100%;
+
+         input[type="search"] {
+            width: 100%;
+            font-size: var(--fs-4);
+            font-weight: 500;
+            color: var(--gray-700);
+            padding: var(--px-8);
+            border-radius: var(--px-8);
+         }
+      }
+
+      .button {
+         display: flex;
+         gap: var(--px-8);
+
+         .btn {
+            flex: 1;
+            background-color: var(--primary);
+            padding: var(--px-8);
+            font-size: var(--fs-3);
+            font-weight: 600;
+            color: var(--white);
+            border-radius: var(--px-8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--px-8);
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            .icon {
+               font-size: var(--fs-4);
+            }
+         }
+         .btn:hover {
+            background-color: var(--thirdnary);
+         }
+      }
+   }
+
+   .main {
+      width: 100%;
+      min-height: 50vh;
+      background-color: var(--primary);
+      border-radius: var(--px-16);
+      padding: var(--px-32);
+      display: flex;
+      flex-wrap: wrap;
+      box-shadow: 2px 2px 2px var(--gray-500);
+      justify-content: space-between;
+      gap: var(--px-32);
+
+      .card {
+         flex: 1;
+         min-width: 25%;
+         max-height: 40%;
+         background-color: var(--secondary);
+         border-radius: var(--px-12);
+         padding: var(--px-24);
+         display: flex;
+         flex-direction: column;
+         gap: var(--px-8);
+         box-shadow: 1px 1px 1px var(--gray-200);
+         transition: 0.3s ease;
+
+         h1 {
+            font-size: var(--fs-8);
+            font-weight: 800;
+            color: var(--gray-100);
+            background-color: var(--primary);
+            border-radius: var(--px-8);
+            text-align: center;
+         }
+
+         img {
+            aspect-ratio: 16/9;
+            object-position: top;
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+         }
+      }
+      .card:hover {
+         transform: scale(1.025);
+      }
+   }
+}

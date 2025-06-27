@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import logo from "/roomit-logo.png";
 
 export default function Navbar() {
    return (
       <nav className="navbar">
          <div className="left-section">
+            <img src={logo} alt="" />
             <input type="search" placeholder="Search a room" />
          </div>
          <div className="right-section">
