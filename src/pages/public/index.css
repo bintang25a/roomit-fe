@@ -1,0 +1,184 @@
+.public-layout .home {
+   width: 100%;
+   height: fit-content;
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: column;
+   padding: var(--px-32) var(--px-64);
+   gap: var(--px-40);
+
+   .top-content {
+      flex: 1;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--px-16);
+      border-radius: var(--px-12);
+      color: var(--primary);
+
+      .welcome {
+         padding: var(--px-8) 0;
+         overflow: hidden;
+         display: flex;
+         flex-direction: column;
+         border-bottom: 2px solid var(--thirdnary);
+
+         h1 {
+            font-size: var(--fs-8);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--gray-800);
+         }
+         h2 {
+            font-size: var(--fs-5);
+            font-weight: 600;
+            line-height: 1;
+            color: var(--gray-600);
+         }
+      }
+
+      .date {
+         width: 100%;
+         background-color: var(--gray-100);
+         padding: var(--px-12);
+         text-align: center;
+         border-radius: var(--px-16);
+         font-size: var(--fs-6);
+         font-weight: 600;
+         color: var(--gray-800);
+         transition: 0.5s ease-in-out;
+         overflow: hidden;
+         position: relative;
+
+         a {
+            opacity: 0;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            color: var(--gray-100);
+         }
+      }
+      .date:hover a {
+         opacity: 1;
+         background-color: var(--primary);
+      }
+   }
+
+   .bottom-content {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: var(--px-24);
+      background-color: var(--gray-100);
+      border-radius: var(--px-12);
+      padding: var(--px-32);
+
+      .header h1 {
+         width: fit-content;
+         padding-right: var(--px-24);
+         color: var(--gray-800);
+         font-size: var(--fs-8);
+         font-weight: 700;
+         border-bottom: 2px solid var(--primary);
+      }
+
+      .main {
+         width: 100%;
+         height: fit-content;
+         display: flex;
+         justify-content: flex-start;
+         align-items: flex-start;
+         gap: var(--px-32);
+
+         .container {
+            flex: 1;
+            width: fit-content;
+            height: calc(var(--px-256) * 2);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--px-16);
+
+            .card {
+               flex: 1;
+               background-color: var(--secondary);
+               min-width: calc(var(--px-256) + var(--px-64));
+               max-width: calc(var(--px-256) + var(--px-64));
+               display: flex;
+               justify-content: flex-start;
+               align-items: center;
+               flex-direction: column;
+               padding: var(--px-16);
+               transition: 0.3s ease;
+               border-radius: var(--px-12);
+               gap: var(--px-8);
+
+               .icon {
+                  aspect-ratio: 1/1;
+                  width: 50%;
+                  height: fit-content;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: var(--px-256);
+                  color: var(--primary);
+               }
+
+               h1 {
+                  font-size: var(--fs-5);
+                  font-weight: 400;
+                  white-space: nowrap;
+                  color: var(--primary);
+               }
+            }
+            .card:hover {
+               transform: scale(1.025);
+               box-shadow: 0 0 5px var(--secondary);
+               cursor: pointer;
+            }
+         }
+         .container:nth-child(2) {
+            background-color: var(--secondary);
+            border-radius: var(--px-12);
+            padding: var(--px-16);
+
+            .detail {
+               text-align: center;
+
+               h1 {
+                  font-size: var(--fs-7);
+                  font-weight: 600;
+                  color: var(--gray-800);
+               }
+
+               img {
+                  aspect-ratio: 16/9;
+                  object-fit: cover;
+                  border-radius: var(--px-8);
+               }
+            }
+
+            .status {
+               h1,
+               h2 {
+                  font-size: var(--fs-3);
+                  font-weight: 600;
+
+                  span {
+                     color: var(--btn-danger);
+                  }
+               }
+            }
+         }
+      }
+   }
+}
