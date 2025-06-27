@@ -6,11 +6,16 @@ import Booking from "./pages/public/booking";
 import AddBooking from "./pages/public/booking/create";
 import ShowBooking from "./pages/public/booking/show";
 import ShowRoom from "./pages/public/rooms/show";
+import Login from "./pages/auth/login";
+import Register from "./pages/auth/register";
 
 export default function App() {
    return (
       <BrowserRouter>
          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
             <Route path="/" element={<PublicLayout />}>
                <Route index element={<Home />} />
 

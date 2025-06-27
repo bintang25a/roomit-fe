@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+// import Calendar from "react-calendar";
+// import "react-calendar/dist/Calendar.css";
 import aula from "/aula.jpg";
 
 export default function ShowRoom() {
-   const [value, setValue] = useState(new Date());
-
    return (
       <main className="rooms show">
          <div className="header">
@@ -25,11 +22,6 @@ export default function ShowRoom() {
                <img src={aula} alt="" />
             </div>
             <div className="right-content">
-               <Calendar
-                  className={"calender"}
-                  onChange={setValue}
-                  value={value}
-               />
                <table>
                   <tbody>
                      <tr>

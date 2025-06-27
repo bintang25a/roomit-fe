@@ -3,7 +3,7 @@
    height: fit-content;
    display: flex;
    justify-content: center;
-   align-items: flex-start;
+   align-items: center;
    flex-direction: column;
    padding: var(--px-32) var(--px-64);
    gap: var(--px-40);
@@ -23,17 +23,18 @@
          display: flex;
          flex-direction: column;
          border-bottom: 2px solid var(--thirdnary);
+         text-align: center;
 
          h1 {
             font-size: var(--fs-8);
             font-weight: 700;
-            line-height: 1;
+            line-height: 1.5;
             color: var(--gray-800);
          }
          h2 {
             font-size: var(--fs-5);
             font-weight: 600;
-            line-height: 1;
+            line-height: 1.5;
             color: var(--gray-600);
          }
       }
@@ -94,25 +95,27 @@
 
       .main {
          width: 100%;
-         height: fit-content;
+         min-height: 10vh;
          display: flex;
-         justify-content: flex-start;
+         justify-content: center;
          align-items: flex-start;
+         flex-direction: column;
          gap: var(--px-32);
 
          .container {
             flex: 1;
-            width: fit-content;
-            height: calc(var(--px-256) * 2);
+            width: 100%;
+            height: fit-content;
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: var(--px-16);
 
             .card {
                flex: 1;
+               height: fit-content;
                background-color: var(--secondary);
-               min-width: calc(var(--px-256) + var(--px-64));
-               max-width: calc(var(--px-256) + var(--px-64));
+               min-width: var(--px-256);
                display: flex;
                justify-content: flex-start;
                align-items: center;
@@ -146,38 +149,21 @@
                cursor: pointer;
             }
          }
-         .container:nth-child(2) {
-            background-color: var(--secondary);
-            border-radius: var(--px-12);
-            padding: var(--px-16);
 
-            .detail {
-               text-align: center;
-
-               h1 {
-                  font-size: var(--fs-7);
-                  font-weight: 600;
-                  color: var(--gray-800);
-               }
-
-               img {
-                  aspect-ratio: 16/9;
-                  object-fit: cover;
-                  border-radius: var(--px-8);
-               }
-            }
-
-            .status {
-               h1,
-               h2 {
-                  font-size: var(--fs-3);
-                  font-weight: 600;
-
-                  span {
-                     color: var(--btn-danger);
-                  }
-               }
-            }
+         .btn {
+            width: 100%;
+            background-color: var(--primary);
+            text-align: center;
+            padding: var(--px-8);
+            font-size: var(--fs-5);
+            font-weight: 600;
+            color: var(--gray-100);
+            border-radius: var(--px-8);
+            transition: 0.3s ease;
+         }
+         .btn:hover {
+            background-color: var(--thirdnary);
+            color: var(--gray-900);
          }
       }
    }
@@ -340,16 +326,6 @@
       .right-content {
          flex: 1;
          max-width: 50%;
-
-         .calender {
-            width: 100%;
-            height: calc(var(--px-256) - var(--px-32));
-            border-top-left-radius: var(--px-16);
-            border-bottom-left-radius: var(--px-16);
-            font-size: var(--fs-3);
-            border: none;
-            overflow: auto;
-         }
 
          table {
             width: 100%;

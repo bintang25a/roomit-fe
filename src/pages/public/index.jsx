@@ -1,4 +1,3 @@
-import aula from "/aula.jpg";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbDoor } from "react-icons/tb";
@@ -52,20 +51,9 @@ export default function Home() {
                      <h1>Booked item</h1>
                   </Link>
                </div>
-               <div className="container">
-                  <div className="detail">
-                     <h1>Aula Djoenda</h1>
-                     <img src={aula} alt="Aula" />
-                  </div>
-                  <div className="status">
-                     <h2>
-                        Status: <span>On progres</span>
-                     </h2>
-                     <h2>
-                        Booking Date: <span>Juni, 23 2025</span>
-                     </h2>
-                  </div>
-               </div>
+               <Link className="action btn" to={"/rooms"}>
+                  Book a Room
+               </Link>
             </div>
          </div>
       </main>
