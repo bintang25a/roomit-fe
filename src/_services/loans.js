@@ -1,14 +1,14 @@
 import API from "../_api";
 import message from "../_utilities/errorMessage";
 
-export const getMembers = async () => {
-   const response = await API.get("/users");
+export const getLoans = async () => {
+   const response = await API.get("/loans");
    return response.data;
 };
 
-export const showMember = async (slug) => {
+export const showLoan = async (slug) => {
    try {
-      const response = await API.get(`/users/${slug}`);
+      const response = await API.get(`/loans/${slug}`);
       return response.data;
    } catch (error) {
       console.log(error);
@@ -16,9 +16,9 @@ export const showMember = async (slug) => {
    }
 };
 
-export const createMember = async (data) => {
+export const createLoan = async (data) => {
    try {
-      await API.post("/users", data);
+      await API.post("/loans", data);
    } catch (error) {
       console.log(error);
       throw error;
@@ -26,9 +26,9 @@ export const createMember = async (data) => {
    }
 };
 
-export const updateMember = async (slug, data) => {
+export const updateLoan = async (slug, data) => {
    try {
-      const response = await API.post(`users/${slug}`, data);
+      const response = await API.post(`loans/${slug}`, data);
       return response.data;
    } catch (error) {
       console.log(error);
@@ -36,9 +36,9 @@ export const updateMember = async (slug, data) => {
    }
 };
 
-export const deleteMember = async (uid) => {
+export const deleteLoan = async (uid) => {
    try {
-      const response = await API.delete(`users/${uid}`);
+      const response = await API.delete(`loans/${uid}`);
       return response.data;
    } catch (error) {
       console.log(error);

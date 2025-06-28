@@ -1,11 +1,33 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getLoans } from "../../../_services/loans";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 export default function Schedule() {
-   const [value, setValue] = useState(new Date());
+   const [dateValue, setDateValue] = useState(new Date());
+   const [loans, setLoans] = useState([]);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         const [loansData] = await Promise.all([getLoans()]);
+         setLoans(loansData);
+      };
+
+      fetchData();
+   }, []);
+
+   const [searchTerm, setSearchTerm] = useState("");
+   const filteredRoom = loans?.filter(
+      (room) =>
+         room.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         Number(room.kapasitas) >= Number(searchTerm)
+   );
+
+   const handleChange = (e) => {
+      setSearchTerm(e.target.value);
+   };
 
    return (
       <main className="schedule">
@@ -15,13 +37,12 @@ export default function Schedule() {
                <h1>Calender</h1>
                <Calendar
                   className={"calender"}
-                  onChange={setValue}
-                  value={value}
+                  onChange={setDateValue}
+                  value={dateValue}
                />
-               {/* <p>Tanggal yang dipilih: {value.toDateString()}</p> */}
             </div>
             <div className="room-list">
-               <h1>Room list</h1>
+               <h1>Event list</h1>
                <div className="container">
                   <Link to={"/rooms/show"} className="list">
                      <h1>Aula Djoeanda</h1>

@@ -5,8 +5,17 @@ import { MdChecklist } from "react-icons/md";
 import { Link } from "react-router-dom";
 import logo from "/roomit-logo.png";
 import "./index.css";
+import { useEffect, useState } from "react";
+import { fullDateLocale, greetings } from "../../_utilities/playDate";
 
 export default function Home() {
+   const [profile, setProfile] = useState({});
+
+   useEffect(() => {
+      const profileData = JSON.parse(localStorage.getItem("user"));
+      setProfile(profileData);
+   }, []);
+
    return (
       <main className="home">
          <div className="header">
@@ -14,17 +23,17 @@ export default function Home() {
                <img src={logo} alt="" />
             </div>
             <div className="greeting">
-               <h1>Hi, Bintang Al Fizar</h1>
-               <h2>Good Morning</h2>
+               <h1>Hi, {profile.nama}</h1>
+               <h2>{greetings()}</h2>
             </div>
-            <div className="date">Kamis, 26 Juni 2025</div>
+            <div className="date">{fullDateLocale()}</div>
             <div className="room-navigation">
                <input type="search" placeholder="Search a room or schedule" />
                <Link className="btn" to={"/rooms"}>
                   Book a Room
                </Link>
             </div>
-            <Link to={"/items"} className="item-navigation">
+            <Link to={"/booked-item"} className="item-navigation">
                Need item? click here to book item
             </Link>
          </div>

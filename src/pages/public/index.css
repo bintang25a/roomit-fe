@@ -10,7 +10,7 @@
    padding-bottom: var(--spx-128);
    background: linear-gradient(
       to bottom,
-      var(--thirdnary) 40svh,
+      var(--thirdnary) 20svh,
       var(--white) 0%
    );
 

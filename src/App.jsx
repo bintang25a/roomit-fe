@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // import home pages
 import Home from "./pages/public";
@@ -29,7 +30,14 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            <Route path="/" element={<PublicLayout />}>
+            <Route
+               path="/"
+               element={
+                  <ProtectedRoute>
+                     <PublicLayout />
+                  </ProtectedRoute>
+               }
+            >
                <Route index element={<Home />} />
                <Route path="submited-request" element={<SubmitedRequest />} />
                <Route path="approval-status" element={<ApprovalStatus />} />
@@ -39,11 +47,11 @@ export default function App() {
                <Route path="profile" element={<Profile />} />
 
                <Route path="rooms" element={<Rooms />} />
-               <Route path="rooms/show" element={<ShowRoom />} />
+               <Route path="rooms/show/:slug" element={<ShowRoom />} />
 
                <Route path="booking">
                   <Route index element={<AddBooking />} />
-                  <Route path="show" element={<ShowBooking />} />
+                  <Route path="show/:slug" element={<ShowBooking />} />
                   <Route path=":slug" element={<AddBooking />} />
                </Route>
             </Route>

@@ -4,9 +4,11 @@ import message from "../_utilities/errorMessage";
 // Fungsi Login
 export const login = async (data) => {
    try {
-      const response = await API.post("/login", data );
+      const response = await API.post("/login", data, {
+         withCredentials: true,
+      });
 
-      const user = response.data; // backend kamu kirim user info langsung
+      const user = response.data;
       localStorage.setItem("user", JSON.stringify(user));
 
       return user;
@@ -21,12 +23,17 @@ export const validateSession = async () => {
    if (typeof window === "undefined") return false;
 
    try {
-      const response = await API.get("/me" );
+      const response = await API.get("/me", {
+         withCredentials: true,
+      });
 
       localStorage.setItem("user", JSON.stringify(response.data));
       return true;
    } catch (error) {
-      console.error("Session tidak valid:", error.response?.data || error.message);
+      console.error(
+         "Session tidak valid:",
+         error.response?.data || error.message
+      );
       localStorage.removeItem("user");
       return false;
    }
@@ -39,7 +46,9 @@ export const isAuthenticated = async () => {
 // Fungsi Logout
 export const logout = async () => {
    try {
-      const response = await API.delete("/logout", null);
+      const response = await API.delete("/logout", {
+         withCredentials: true,
+      });
 
       localStorage.removeItem("user");
 

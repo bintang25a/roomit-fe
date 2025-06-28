@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 import aula from "/aula.jpg";
+import { useEffect, useState } from "react";
+import { showRoom } from "../../../_services/rooms";
 
 export default function ShowRoom() {
+   const [room, setRoom] = useState({});
+   const { slug } = useParams();
+
+   useEffect(() => {
+      const fetchData = async () => {
+         const [roomData] = await Promise.all([showRoom(slug)]);
+         setRoom(roomData);
+      };
+
+      fetchData();
+   }, [slug]);
+
    return (
       <main className="room-show">
          <ActivityHeader head={"Aula Djoeanda"} desc={"Gedung A Lantai 2"} />
@@ -16,22 +30,22 @@ export default function ShowRoom() {
                      <tr>
                         <td>Nama</td>
                         <td>:</td>
-                        <td>Al Batani</td>
+                        <td>{room.nama}</td>
                      </tr>
                      <tr>
                         <td>Kapasitas</td>
                         <td>:</td>
-                        <td>32 Orang</td>
+                        <td>{room.kapasitas} Orang</td>
                      </tr>
                      <tr>
                         <td>Gedung</td>
                         <td>:</td>
-                        <td>Gedung A lantai 3</td>
+                        <td>Gedung {room.gedung}</td>
                      </tr>
                      <tr>
                         <td>Ketersediaan</td>
                         <td>:</td>
-                        <td>unknown</td>
+                        <td>Cek kalender event</td>
                      </tr>
                   </tbody>
                </table>
@@ -40,7 +54,7 @@ export default function ShowRoom() {
                <Link to={"/rooms"} className="btn">
                   Cancel
                </Link>
-               <Link to={"/booking"} className="btn">
+               <Link to={`/booking/${room.slug}`} className="btn">
                   Book
                </Link>
             </div>

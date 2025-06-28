@@ -1,14 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "/roomit-logo hd.png";
 import "./index.css";
+import { useState } from "react";
+import { createMember } from "../../_services/users";
 
 export default function Register() {
+   const [formData, setFormData] = useState({
+      nama: "",
+      uid: "",
+      email: "",
+      no_hp: "",
+      role: "",
+      password: "",
+   });
+   const navigate = useNavigate();
+
+   const handleChange = (e) => {
+      const { name, value } = e.target;
+
+      setFormData({
+         ...formData,
+         [name]: value,
+      });
+   };
+
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+         await createMember(formData);
+         navigate("/login", { replace: true });
+      } catch (error) {
+         window.alert(error);
+         console.log(error);
+      }
+   };
+
    return (
       <main className="auth">
          <div className="logo">
             <img src={logo} alt="" />
          </div>
-         <form>
+         <form onSubmit={handleSubmit}>
             <div className="container">
                <div className="input">
                   <input
@@ -17,6 +50,8 @@ export default function Register() {
                      id="nama"
                      placeholder="Birth name"
                      autoComplete="off"
+                     onChange={handleChange}
+                     value={formData.nama}
                      required
                   />
                </div>
@@ -26,6 +61,8 @@ export default function Register() {
                      name="uid"
                      id="uid"
                      placeholder="NIM/NIDN/NIP"
+                     onChange={handleChange}
+                     value={formData.uid}
                      autoComplete="off"
                      required
                   />
@@ -36,12 +73,32 @@ export default function Register() {
                      name="email"
                      id="email"
                      placeholder="E-Mail"
+                     onChange={handleChange}
+                     value={formData.email}
                      autoComplete="off"
                      required
                   />
                </div>
                <div className="input">
-                  <select name="role" id="role" required>
+                  <input
+                     type="text"
+                     name="no_hp"
+                     id="no_hp"
+                     placeholder="Nomor hp"
+                     onChange={handleChange}
+                     value={formData.no_hp}
+                     autoComplete="off"
+                     required
+                  />
+               </div>
+               <div className="input">
+                  <select
+                     name="role"
+                     id="role"
+                     required
+                     onChange={handleChange}
+                     value={formData.role}
+                  >
                      <option value="">--Select Role--</option>
                      <option value="admin">Admin</option>
                      <option value="dosen">Dosen</option>
@@ -50,17 +107,21 @@ export default function Register() {
                </div>
                <div className="input">
                   <input
-                     type="current-password"
+                     type="password"
                      name="password"
                      id="password"
                      placeholder="password"
+                     onChange={handleChange}
+                     value={formData.password}
                      autoComplete="off"
                      required
                   />
                </div>
             </div>
             <div className="action">
-               <button className="btn">Sign up</button>
+               <button className="btn" type="submit">
+                  Sign up
+               </button>
             </div>
          </form>
          <div className="footer">
