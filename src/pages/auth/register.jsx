@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { createMember } from "../../_services/users";
+import useLoadingSpinner from "../../components/element/LoadingModal";
+import useConfirmDialog from "../../components/element/ConfirmModal";
 import logo from "/roomit-logo hd.png";
 import "./index.css";
-import { useState } from "react";
-import { createMember } from "../../_services/users";
 
 export default function Register() {
+   const { loading, LoadingSpinner } = useLoadingSpinner();
+   const { confirm, ConfirmDialog } = useConfirmDialog();
+
    const [formData, setFormData] = useState({
       nama: "",
       uid: "",
@@ -26,12 +31,16 @@ export default function Register() {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
+      loading(true);
 
       try {
          await createMember(formData);
+         loading(false);
+         await confirm("Create account successfully", true);
          navigate("/login", { replace: true });
       } catch (error) {
-         window.alert(error);
+         loading(false);
+         confirm("Create account failed", false);
          console.log(error);
       }
    };
@@ -130,6 +139,8 @@ export default function Register() {
                LOGIN
             </Link>
          </div>
+         <LoadingSpinner />
+         <ConfirmDialog />
       </main>
    );
 }

@@ -1,20 +1,16 @@
+import { Link } from "react-router-dom";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbDoor } from "react-icons/tb";
 import { MdChecklist } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { fullDateLocale, greetings } from "../../_utilities/playDate";
 import logo from "/roomit-logo.png";
 import "./index.css";
-import { useEffect, useState } from "react";
-import { fullDateLocale, greetings } from "../../_utilities/playDate";
+import { useState } from "react";
 
 export default function Home() {
-   const [profile, setProfile] = useState({});
-
-   useEffect(() => {
-      const profileData = JSON.parse(localStorage.getItem("user"));
-      setProfile(profileData);
-   }, []);
+   const profile = JSON.parse(localStorage.getItem("user"));
+   const [query, setQuery] = useState("");
 
    return (
       <main className="home">
@@ -28,8 +24,16 @@ export default function Home() {
             </div>
             <div className="date">{fullDateLocale()}</div>
             <div className="room-navigation">
-               <input type="search" placeholder="Search a room or schedule" />
-               <Link className="btn" to={"/rooms"}>
+               <input
+                  type="search"
+                  placeholder="Search a room or capacity"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+               />
+               <Link
+                  className="btn"
+                  to={query ? `/rooms/${query.trim()}` : "/rooms"}
+               >
                   Book a Room
                </Link>
             </div>

@@ -1,33 +1,21 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getLoans } from "../../../_services/loans";
+import { useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
+import { fullDate } from "../../../_utilities/playDate";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 export default function Schedule() {
-   const [dateValue, setDateValue] = useState(new Date());
-   const [loans, setLoans] = useState([]);
+   const [dateValue, setDateValue] = useState("");
 
-   useEffect(() => {
-      const fetchData = async () => {
-         const [loansData] = await Promise.all([getLoans()]);
-         setLoans(loansData);
-      };
-
-      fetchData();
-   }, []);
-
-   const [searchTerm, setSearchTerm] = useState("");
-   const filteredRoom = loans?.filter(
-      (room) =>
-         room.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         Number(room.kapasitas) >= Number(searchTerm)
-   );
-
-   const handleChange = (e) => {
-      setSearchTerm(e.target.value);
-   };
+   const { loans } = useOutletContext();
+   const filteredLoan = loans?.filter((loan) => {
+      if (!dateValue && loan.progres === "") return true;
+      return (
+         fullDate(loan.tanggal_pemakaian) === fullDate(dateValue) &&
+         loan.progres === ""
+      );
+   });
 
    return (
       <main className="schedule">
@@ -44,54 +32,26 @@ export default function Schedule() {
             <div className="room-list">
                <h1>Event list</h1>
                <div className="container">
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
-                  <Link to={"/rooms/show"} className="list">
-                     <h1>Aula Djoeanda</h1>
-                     <h2>
-                        <span>Dipakai:</span> 29 Juli 2025
-                     </h2>
-                  </Link>
+                  {loans ? (
+                     filteredLoan.map((loan) => (
+                        <Link
+                           key={loan.nomor_peminjaman}
+                           to={`/booking/show/${loan.slug}`}
+                           className="list"
+                        >
+                           <h1>{loan?.room?.nama}</h1>
+                           <h2>
+                              <span>Dipakai:</span>{" "}
+                              {fullDate(loan?.tanggal_pemakaian)}
+                           </h2>
+                        </Link>
+                     ))
+                  ) : (
+                     <div className="list">
+                        <h1>No Event right now</h1>
+                        <h2>Make your own event</h2>
+                     </div>
+                  )}
                </div>
             </div>
          </div>

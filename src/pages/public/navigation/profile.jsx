@@ -1,30 +1,24 @@
-import { useEffect, useState } from "react";
-import profilePhoto from "/profile.png";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { logout } from "../../../_services/auth";
-import { useNavigate } from "react-router-dom";
+import profilePhoto from "/profile.png";
 
 export default function Profile() {
-   const [profile, setProfile] = useState({});
    const navigate = useNavigate();
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const profileData = localStorage.getItem("user");
-         setProfile(JSON.parse(profileData));
-      };
-
-      fetchData();
-   }, []);
+   const { user, loading, confirm } = useOutletContext();
+   const profile = user;
 
    const handleLogout = async () => {
+      loading(true);
+
       try {
          await logout();
+         loading(false);
          navigate("/login", { replace: true });
       } catch (error) {
-         alert(error);
+         loading(false);
+         confirm("Logout failed", false);
          console.log(error);
       }
-      await logout();
    };
 
    return (

@@ -1,26 +1,12 @@
-import { Link } from "react-router-dom";
-import ActivityHeader from "../../../components/public/ActivityHeader";
-import { useEffect, useState } from "react";
-import { showMember } from "../../../_services/users";
+import { Link, useOutletContext } from "react-router-dom";
 import { fullDate, untilWeek } from "../../../_utilities/playDate";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function ApprovalStatus() {
-   const [loans, setLoans] = useState([]);
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const localUser = JSON.parse(localStorage.getItem("user"));
-
-         const [userData] = await Promise.all([showMember(localUser.slug)]);
-         const filteredLoans = userData.loans.filter((loan) =>
-            untilWeek(loan.tanggal_pengajuan)
-         );
-
-         setLoans(filteredLoans);
-      };
-
-      fetchData();
-   }, []);
+   const { user } = useOutletContext();
+   const loans = user?.loans?.filter((loan) =>
+      untilWeek(loan.tanggal_pengajuan)
+   );
 
    return (
       <main className="approval-status">

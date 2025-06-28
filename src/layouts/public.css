@@ -1,4 +1,4 @@
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
    .desktop-handle {
       display: none;
    }
@@ -85,7 +85,7 @@
    }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 769px) {
    .public-layout {
       display: none;
    }
@@ -100,7 +100,7 @@
 
       .container {
          width: 50%;
-         height: var(--px-256);
+         height: fit-content;
          border-radius: var(--px-24);
          padding: var(--px-64);
          display: flex;

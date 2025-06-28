@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../_services/auth";
+import useLoadingSpinner from "../../components/element/LoadingModal";
+import useConfirmDialog from "../../components/element/ConfirmModal";
 import logo from "/roomit-logo hd.png";
 import "./index.css";
-import { useState } from "react";
-import { login } from "../../_services/auth";
 
 export default function Login() {
+   const { loading, LoadingSpinner } = useLoadingSpinner();
+   const { confirm, ConfirmDialog } = useConfirmDialog();
+
    const [loginData, setLoginData] = useState({
       uid: "",
       password: "",
@@ -22,12 +27,15 @@ export default function Login() {
    const navigate = useNavigate();
    const handleSubmit = async (e) => {
       e.preventDefault();
+      loading(true);
 
       try {
          await login(loginData);
+         loading(false);
          navigate("/", { replace: true });
       } catch (error) {
-         alert(error);
+         loading(false);
+         confirm("Login failed", false);
          console.log(error);
       }
    };
@@ -77,6 +85,8 @@ export default function Login() {
                SIGN UP
             </Link>
          </div>
+         <LoadingSpinner />
+         <ConfirmDialog />
       </main>
    );
 }

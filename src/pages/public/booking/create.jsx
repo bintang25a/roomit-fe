@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import ActivityHeader from "../../../components/public/ActivityHeader";
-import { getRooms } from "../../../_services/rooms";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { createLoan } from "../../../_services/loans";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function AddBooking() {
    const newForm = {
@@ -18,23 +17,9 @@ export default function AddBooking() {
       progres: "",
    };
    const [formData, setFormData] = useState(newForm);
-   const [rooms, setRooms] = useState([]);
-   const [bookRoom, setBookRoom] = useState([]);
    const { slug } = useParams();
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const [roomsData] = await Promise.all([getRooms()]);
-         setRooms(roomsData);
-
-         if (slug) {
-            const room = roomsData.filter((room) => room.slug === slug);
-            setBookRoom(room);
-         }
-      };
-
-      fetchData();
-   }, [slug]);
+   const { rooms, loading, confirm } = useOutletContext();
+   const bookRoom = rooms.find((room) => room.slug === slug);
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -50,12 +35,17 @@ export default function AddBooking() {
       const day = String(now.getDate()).padStart(2, "0");
       const month = String(now.getMonth() + 1).padStart(2, "0");
       const year = now.getFullYear();
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
 
-      return day + month + year;
+      return day + month + year + hours + minutes + seconds;
    };
 
+   const navigate = useNavigate();
    const handleSubmit = async (e) => {
       e.preventDefault();
+      loading(true);
       const user = JSON.parse(localStorage.getItem("user"));
 
       const id_peminjam = user.uid;
@@ -65,7 +55,7 @@ export default function AddBooking() {
       let nomor_peminjaman;
       let kode_ruangan;
       if (slug) {
-         kode_ruangan = bookRoom[0].kode_ruangan;
+         kode_ruangan = bookRoom.kode_ruangan;
          nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDate()}`;
       } else {
          nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDate()}`;
@@ -82,9 +72,13 @@ export default function AddBooking() {
          };
 
          await createLoan(data);
+         loading(false);
+         await confirm("Booking form successfully submited", true);
          setFormData(newForm);
+         navigate("/", { replace: true });
       } catch (error) {
-         alert(error);
+         loading(false);
+         confirm("Failed", false);
          console.log(error);
       }
    };
@@ -100,13 +94,13 @@ export default function AddBooking() {
                         name="kode_ruangan"
                         id="kode_ruangan"
                         onChange={handleChange}
-                        defaultValue={bookRoom[0]?.kode_ruangan || ""}
+                        defaultValue={bookRoom?.kode_ruangan || ""}
                         disabled={slug}
                         required
                      >
                         {slug ? (
-                           <option value={bookRoom[0]?.kode_ruangan}>
-                              {bookRoom[0]?.nama}
+                           <option value={bookRoom?.kode_ruangan}>
+                              {bookRoom?.nama}
                            </option>
                         ) : (
                            <option value="">Nama Ruangan</option>

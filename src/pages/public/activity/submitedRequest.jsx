@@ -1,23 +1,9 @@
-import { Link } from "react-router-dom";
-import ActivityHeader from "../../../components/public/ActivityHeader";
-import { useEffect, useState } from "react";
-import { showMember } from "../../../_services/users";
+import { Link, useOutletContext } from "react-router-dom";
 import { fullDateLocale } from "../../../_utilities/playDate";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function SubmitedRequest() {
-   const [user, setUser] = useState({});
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const localUser = JSON.parse(localStorage.getItem("user"));
-
-         const [userData] = await Promise.all([showMember(localUser.slug)]);
-
-         setUser(userData);
-      };
-
-      fetchData();
-   }, []);
+   const { user } = useOutletContext();
 
    return (
       <main className="submited-request">

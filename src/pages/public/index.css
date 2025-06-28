@@ -181,6 +181,7 @@
 .public-layout .booked-item,
 .public-layout .room-show,
 .public-layout .booking,
+.public-layout .booking-show,
 .public-layout .schedule {
    width: 100%;
    min-height: 50svh;
@@ -630,7 +631,7 @@
          select {
             width: 100%;
             height: 100%;
-            background-color: transparent;
+            background-color: var(--secondary);
             color: var(--gray-700);
          }
          label {
@@ -667,6 +668,85 @@
          font-weight: 600;
          color: var(--gray-100);
          border-radius: var(--spx-8);
+      }
+   }
+}
+
+.public-layout .booking-show .main {
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-direction: column;
+   gap: var(--spx-16);
+   padding: 0 var(--spx-48);
+   padding-top: var(--spx-16);
+
+   .image {
+      padding: var(--spx-24) var(--spx-16);
+      background-color: var(--primary);
+      border-radius: var(--spx-12);
+
+      img {
+         aspect-ratio: 16/10;
+         object-fit: cover;
+         object-position: top;
+         border-radius: var(--spx-8);
+      }
+   }
+
+   .detail {
+      width: 100%;
+      background-color: var(--secondary);
+      padding: var(--spx-24);
+      border-radius: var(--spx-12);
+      overflow-x: auto;
+
+      table {
+         width: calc(var(--spx-256) * 2);
+         table-layout: fixed;
+
+         tr {
+            td:nth-child(1) {
+               width: 35%;
+               font-weight: 500;
+            }
+            td:nth-child(2) {
+               width: 5%;
+            }
+
+            td {
+               font-size: var(--fs-3);
+               font-weight: 400;
+               white-space: nowrap;
+               padding: var(--px-8);
+            }
+         }
+      }
+   }
+
+   .action {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .btn:nth-child(1) {
+         background-color: var(--secondary);
+         color: var(--gray-600);
+      }
+      .btn:nth-child(2) {
+         background-color: var(--primary);
+         color: var(--gray-100);
+      }
+      .btn {
+         padding: var(--spx-8) var(--spx-24);
+         border-radius: var(--spx-8);
+         font-size: var(--fs-4);
+         font-weight: 600;
+         transition: 0.3s ease;
+      }
+      .btn:active {
+         transform: scale(1.05);
       }
    }
 }
@@ -806,9 +886,10 @@
 
       .row {
          display: flex;
+         align-items: center;
 
          h1 {
-            width: 30%;
+            min-width: 30%;
             font-size: var(--fs-4);
             font-weight: 600;
             color: var(--gray-700);
@@ -818,7 +899,13 @@
             font-size: var(--fs-4);
             font-weight: 500;
             color: var(--gray-700);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
          }
+      }
+      .row:nth-child(3) h2 {
+         font-size: var(--fs-3);
       }
    }
 

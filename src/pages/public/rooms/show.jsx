@@ -1,21 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 import aula from "/aula.jpg";
-import { useEffect, useState } from "react";
-import { showRoom } from "../../../_services/rooms";
 
 export default function ShowRoom() {
-   const [room, setRoom] = useState({});
+   const { rooms } = useOutletContext();
    const { slug } = useParams();
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const [roomData] = await Promise.all([showRoom(slug)]);
-         setRoom(roomData);
-      };
-
-      fetchData();
-   }, [slug]);
+   const room = rooms?.find((room) => room.slug === slug);
 
    return (
       <main className="room-show">
@@ -30,17 +20,17 @@ export default function ShowRoom() {
                      <tr>
                         <td>Nama</td>
                         <td>:</td>
-                        <td>{room.nama}</td>
+                        <td>{room?.nama}</td>
                      </tr>
                      <tr>
                         <td>Kapasitas</td>
                         <td>:</td>
-                        <td>{room.kapasitas} Orang</td>
+                        <td>{room?.kapasitas} Orang</td>
                      </tr>
                      <tr>
                         <td>Gedung</td>
                         <td>:</td>
-                        <td>Gedung {room.gedung}</td>
+                        <td>Gedung {room?.gedung}</td>
                      </tr>
                      <tr>
                         <td>Ketersediaan</td>
@@ -54,7 +44,7 @@ export default function ShowRoom() {
                <Link to={"/rooms"} className="btn">
                   Cancel
                </Link>
-               <Link to={`/booking/${room.slug}`} className="btn">
+               <Link to={`/booking/${room?.slug}`} className="btn">
                   Book
                </Link>
             </div>

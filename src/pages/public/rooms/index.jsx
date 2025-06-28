@@ -1,22 +1,19 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import aula from "/aula.jpg";
 import logo from "/roomit-logo.png";
-import { useEffect, useState } from "react";
-import { getRooms } from "../../../_services/rooms";
 
 export default function Rooms() {
-   const [rooms, setRooms] = useState([]);
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const [roomsData] = await Promise.all([getRooms()]);
-         setRooms(roomsData);
-      };
-
-      fetchData();
-   }, []);
+   const { rooms } = useOutletContext();
+   const { query } = useParams();
 
    const [searchTerm, setSearchTerm] = useState("");
+   useEffect(() => {
+      if (query) {
+         setSearchTerm(query.toLowerCase());
+      }
+   }, [query]);
+
    const filteredRoom = rooms?.filter(
       (room) =>
          room.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||

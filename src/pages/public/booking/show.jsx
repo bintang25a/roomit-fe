@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import aula from "/aula.jpg";
-import ActivityHeader from "../../../components/public/ActivityHeader";
-import { showLoan } from "../../../_services/loans";
+import { useOutletContext, useParams } from "react-router-dom";
 import { fullDate } from "../../../_utilities/playDate";
+import ActivityHeader from "../../../components/public/ActivityHeader";
+import aula from "/aula.jpg";
 
 export default function ShowBooking() {
-   const [loan, setLoan] = useState({});
+   const { loans } = useOutletContext();
    const { slug } = useParams();
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const [loanData] = await Promise.all([showLoan(slug)]);
-         setLoan(loanData);
-      };
-
-      fetchData();
-   }, [slug]);
+   const loan = loans.find((loan) => loan.slug === slug);
 
    return (
-      <main className="room-show">
+      <main className="booking-show">
          <ActivityHeader
             head={loan?.room?.nama}
             desc={"Check detail booked room"}

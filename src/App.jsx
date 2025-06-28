@@ -46,8 +46,11 @@ export default function App() {
                <Route path="schedule" element={<Schedule />} />
                <Route path="profile" element={<Profile />} />
 
-               <Route path="rooms" element={<Rooms />} />
-               <Route path="rooms/show/:slug" element={<ShowRoom />} />
+               <Route path="rooms">
+                  <Route index element={<Rooms />} />
+                  <Route path="show/:slug" element={<ShowRoom />} />
+                  <Route path=":query" element={<Rooms />} />
+               </Route>
 
                <Route path="booking">
                   <Route index element={<AddBooking />} />

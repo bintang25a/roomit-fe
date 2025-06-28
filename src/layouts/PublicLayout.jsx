@@ -1,16 +1,65 @@
+import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { getMembers, showMember } from "../_services/users";
+import { getRooms } from "../_services/rooms";
+import { getLoans } from "../_services/loans";
+import useConfirmDialog from "../components/element/ConfirmModal";
+import useLoadingSpinner from "../components/element/LoadingModal";
 import Navbar from "../components/public/Navbar";
-import Footer from "../components/public/Footer";
 import "./public.css";
 
 export default function PublicLayout() {
+   const { confirm, ConfirmDialog } = useConfirmDialog();
+   const { loading, LoadingSpinner } = useLoadingSpinner();
+
    const navigate = useNavigate();
+   const [users, setUsers] = useState([]);
+   const [user, setUser] = useState({});
+   const [rooms, setRooms] = useState([]);
+   const [loans, setLoans] = useState([]);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         const [usersData, roomsData, loansData] = await Promise.all([
+            getMembers(),
+            getRooms(),
+            getLoans(),
+         ]);
+
+         setUsers(usersData);
+         setRooms(roomsData);
+         setLoans(loansData);
+      };
+
+      setTimeout(() => {
+         const localUser = JSON.parse(localStorage.getItem("user"));
+         const fetchUser = async () => {
+            const [userData] = await Promise.all([showMember(localUser.slug)]);
+            setUser(userData);
+         };
+
+         if (localUser) {
+            fetchUser();
+         }
+      }, 2000);
+
+      fetchData();
+   }, []);
 
    return (
       <>
          <div className="public-layout">
-            <Outlet />
+            <Outlet
+               context={{
+                  users,
+                  user,
+                  rooms,
+                  loans,
+                  confirm,
+                  loading,
+               }}
+            />
             <Navbar />
             <div className="btn-back">
                <button
@@ -21,6 +70,8 @@ export default function PublicLayout() {
                </button>
             </div>
          </div>
+         <ConfirmDialog />
+         <LoadingSpinner />
          <div className="desktop-handle">
             <div className="container">
                <h1>This website is Mobile only</h1>
