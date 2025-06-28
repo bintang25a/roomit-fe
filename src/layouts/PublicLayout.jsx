@@ -8,18 +8,24 @@ export default function PublicLayout() {
    const navigate = useNavigate();
 
    return (
-      <div className="public-layout">
-         <Navbar />
-         <Outlet />
-         <Footer />
-         <div className="btn-back">
-            <button
-               onClick={() => navigate(-1, { replace: true })}
-               className="btn"
-            >
-               <FaArrowLeft />
-            </button>
+      <>
+         <div className="public-layout">
+            <Outlet />
+            <Navbar />
+            <div className="btn-back">
+               <button
+                  onClick={() => navigate(-1, { replace: true })}
+                  className="btn"
+               >
+                  <FaArrowLeft />
+               </button>
+            </div>
          </div>
-      </div>
+         <div className="desktop-handle">
+            <div className="container">
+               <h1>This website is Mobile only</h1>
+            </div>
+         </div>
+      </>
    );
 }
