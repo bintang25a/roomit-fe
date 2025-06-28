@@ -1,17 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
+
+// import home pages
 import Home from "./pages/public";
-import Rooms from "./pages/public/rooms";
-import Booking from "./pages/public/booking";
-import AddBooking from "./pages/public/booking/create";
-import ShowBooking from "./pages/public/booking/show";
-import ShowRoom from "./pages/public/rooms/show";
-import Login from "./pages/auth/login";
-import Register from "./pages/auth/register";
 import SubmitedRequest from "./pages/public/activity/submitedRequest";
 import ApprovalStatus from "./pages/public/activity/approvalStatus";
 import BookedItem from "./pages/public/activity/bookedItem";
 import BookedRoom from "./pages/public/activity/bookedRoom";
+import Schedule from "./pages/public/navigation/schedule";
+import Profile from "./pages/public/navigation/profile";
+
+//import room pages
+import Rooms from "./pages/public/rooms";
+import ShowRoom from "./pages/public/rooms/show";
+
+//import booking pages
+import AddBooking from "./pages/public/booking/create";
+import ShowBooking from "./pages/public/booking/show";
+
+//import auth pages
+import Login from "./pages/auth/login";
+import Register from "./pages/auth/register";
 
 export default function App() {
    return (
@@ -26,16 +35,16 @@ export default function App() {
                <Route path="approval-status" element={<ApprovalStatus />} />
                <Route path="booked-room" element={<BookedRoom />} />
                <Route path="booked-item" element={<BookedItem />} />
+               <Route path="schedule" element={<Schedule />} />
+               <Route path="profile" element={<Profile />} />
 
                <Route path="rooms" element={<Rooms />} />
-               <Route path="rooms/1" element={<ShowRoom />} />
+               <Route path="rooms/show" element={<ShowRoom />} />
 
                <Route path="booking">
-                  <Route index element={<Booking />} />
+                  <Route index element={<AddBooking />} />
                   <Route path="show" element={<ShowBooking />} />
-                  <Route path="form" element={<AddBooking />} />
-                  <Route path="form/:slug" element={<AddBooking />} />
-                  <Route path="history" element={<AddBooking />} />
+                  <Route path=":slug" element={<AddBooking />} />
                </Route>
             </Route>
          </Routes>

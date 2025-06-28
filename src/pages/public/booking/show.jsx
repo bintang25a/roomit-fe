@@ -1,20 +1,15 @@
 import aula from "/aula.jpg";
-import { Link } from "react-router-dom";
-import { TbDoor } from "react-icons/tb";
-import { HiOutlineDocumentText } from "react-icons/hi";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function ShowBooking() {
    return (
-      <main className="booking show">
-         <div className="header">
-            <h1>Request Room</h1>
-            <h2>Check your approval status</h2>
-         </div>
+      <main className="room-show">
+         <ActivityHeader head={"Al Batani"} desc={"Check detail booked room"} />
          <div className="main">
-            <div className="left-content">
-               <img src={aula} alt="" />
+            <div className="image">
+               <img src={aula} />
             </div>
-            <div className="right-content">
+            <div className="detail">
                <table>
                   <tbody>
                      <tr>

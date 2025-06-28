@@ -1,0 +1,90 @@
+.auth {
+   width: 100%;
+   height: 100svh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: var(--spx-32);
+
+   .logo {
+      width: 70%;
+      height: auto;
+      overflow: hidden;
+
+      img {
+         width: 100%;
+      }
+   }
+
+   form {
+      width: 100%;
+      height: fit-content;
+   }
+
+   .container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: var(--spx-8);
+
+      .input {
+         width: 80%;
+         font-size: var(--fs-4);
+         background-color: var(--secondary);
+         padding: var(--spx-8) var(--spx-16);
+         border-radius: var(--spx-8);
+         overflow: hidden;
+
+         select,
+         input {
+            width: 100%;
+            height: fit-content;
+            background-color: transparent;
+            color: var(--gray-700);
+         }
+      }
+   }
+
+   .action {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: var(--spx-32);
+
+      .btn {
+         width: fit-content;
+         padding: var(--spx-8) var(--spx-40);
+         background-color: var(--primary);
+         border-radius: var(--spx-12);
+         font-size: var(--fs-4);
+         font-weight: 600;
+         color: var(--gray-100);
+      }
+   }
+
+   .footer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h1 {
+         text-align: center;
+         font-size: var(--fs-2);
+         font-weight: 400;
+      }
+
+      .btn {
+         margin-top: var(--spx-12);
+         width: fit-content;
+         font-size: var(--fs-3);
+         font-weight: 400;
+         text-decoration: underline;
+         color: var(--gray-700);
+      }
+   }
+}

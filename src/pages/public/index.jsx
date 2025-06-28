@@ -9,7 +9,7 @@ import "./index.css";
 export default function Home() {
    return (
       <main className="home">
-         <header className="header">
+         <div className="header">
             <div className="logo">
                <img src={logo} alt="" />
             </div>
@@ -27,7 +27,7 @@ export default function Home() {
             <Link to={"/items"} className="item-navigation">
                Need item? click here to book item
             </Link>
-         </header>
+         </div>
          <div className="main">
             <div className="header">
                <h1>Activity</h1>

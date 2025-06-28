@@ -12,31 +12,43 @@ export default function ApprovalStatus() {
             <Link to={"/booking/show"} className="list">
                <h1>Aula Djoeanda</h1>
                <h2>
-                  <span>Status:</span> Accepted
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
                </h2>
             </Link>
             <Link to={"/booking/show"} className="list">
                <h1>Aula Djoeanda</h1>
                <h2>
-                  <span>Status:</span> Accepted
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
                </h2>
             </Link>
             <Link to={"/booking/show"} className="list">
                <h1>Aula Djoeanda</h1>
                <h2>
-                  <span>Status:</span> Accepted
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
                </h2>
             </Link>
             <Link to={"/booking/show"} className="list">
                <h1>Aula Djoeanda</h1>
                <h2>
-                  <span>Status:</span> Accepted
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
                </h2>
             </Link>
             <Link to={"/booking/show"} className="list">
                <h1>Aula Djoeanda</h1>
                <h2>
-                  <span>Status:</span> Accepted
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
+               </h2>
+            </Link>
+            <Link to={"/booking/show"} className="list">
+               <h1>Aula Djoeanda</h1>
+               <h2>
+                  <span>Pengajuan:</span> 23 Juni 2025 | <span>Status:</span>{" "}
+                  Accepted
                </h2>
             </Link>
          </div>

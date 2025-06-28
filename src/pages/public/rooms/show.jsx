@@ -1,27 +1,16 @@
 import { Link } from "react-router-dom";
-// import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 import aula from "/aula.jpg";
 
 export default function ShowRoom() {
    return (
-      <main className="rooms show">
-         <div className="header">
-            <h1>Al Batani</h1>
-            <h2>Minimalist sweet room</h2>
-         </div>
-         <div className="action">
-            <div className="button">
-               <Link to={"/booking/form"} className="btn">
-                  Book this rooms
-               </Link>
-            </div>
-         </div>
+      <main className="room-show">
+         <ActivityHeader head={"Aula Djoeanda"} desc={"Gedung A Lantai 2"} />
          <div className="main">
-            <div className="left-content">
+            <div className="image">
                <img src={aula} alt="" />
             </div>
-            <div className="right-content">
+            <div className="detail">
                <table>
                   <tbody>
                      <tr>
@@ -46,6 +35,14 @@ export default function ShowRoom() {
                      </tr>
                   </tbody>
                </table>
+            </div>
+            <div className="action">
+               <Link to={"/rooms"} className="btn">
+                  Cancel
+               </Link>
+               <Link to={"/booking"} className="btn">
+                  Book
+               </Link>
             </div>
          </div>
       </main>

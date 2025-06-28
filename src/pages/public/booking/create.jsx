@@ -1,16 +1,12 @@
-import logo from "/roomit-logo.png";
+import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function AddBooking() {
    return (
-      <main className="booking-add">
-         <form>
-            <div className="container">
-               <div className="header">
-                  <img src={logo} alt="" />
-                  <h1>Aula Djoeanda</h1>
-                  <h2>Verification form</h2>
-               </div>
-               <div className="main">
+      <main className="booking">
+         <ActivityHeader head={"Aula Djoeanda"} desc={"Gedung A Lantai 2"} />
+         <div className="main">
+            <form>
+               <div className="container">
                   <div className="input">
                      <select name="nama" id="nama" required>
                         <option value="">Nama Ruangan</option>
@@ -65,8 +61,8 @@ export default function AddBooking() {
                <div className="footer">
                   <button className="btn">Ajukan peminjaman</button>
                </div>
-            </div>
-         </form>
+            </form>
+         </div>
       </main>
    );
 }
