@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MdHome, MdLayers, MdAccessTime } from "react-icons/md";
+import { MdHome, MdLayers, MdWorkspacesOutline } from "react-icons/md";
 import logo from "/roomit-logo.png";
 
 export default function Sidebar() {
@@ -43,11 +43,14 @@ export default function Sidebar() {
             </div>
             <div className="group">
                <div className="header">
-                  <MdAccessTime className="icon" /> Something
+                  <MdWorkspacesOutline className="icon" /> Workspace
                </div>
                <ul>
                   <li>
                      <Link to={"/admin/loans/approve"}>Needs approval</Link>
+                  </li>
+                  <li>
+                     <Link to={"/admin/loans/approve"}>Make loan</Link>
                   </li>
                   <li>
                      <Link to={"/admin/users/profile"}>Profile</Link>

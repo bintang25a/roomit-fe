@@ -110,8 +110,10 @@
       }
 
       .confirm-buttons {
+         width: 100%;
          display: flex;
          justify-content: center;
+         gap: var(--px-24);
 
          button {
             padding: var(--spx-8) var(--spx-16);
@@ -122,6 +124,12 @@
             transition: 0.2s ease;
             font-size: var(--fs-3);
             background-color: var(--btn-info);
+         }
+         button.yes {
+            background-color: var(--btn-save);
+         }
+         button.no {
+            background-color: var(--btn-danger);
          }
          button:active {
             background-color: var(--gray-200);

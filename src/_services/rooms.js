@@ -15,6 +15,10 @@ export const showRoom = async (slug) => {
    }
 };
 
+export const getImageUrl = (path) => {
+   return `${API.defaults.baseURL + path}`;
+};
+
 export const createRoom = async (data) => {
    try {
       await API.post("/rooms", data);
@@ -24,18 +28,18 @@ export const createRoom = async (data) => {
    }
 };
 
-export const updateRoom = async (slug, data) => {
+export const updateRoom = async (primary, data) => {
    try {
-      await API.patch(`rooms/${slug}`, data);
+      await API.patch(`rooms/${primary}`, data);
    } catch (error) {
       console.log(error);
       throw error;
    }
 };
 
-export const deleteRoom = async (uid) => {
+export const deleteRoom = async (primary) => {
    try {
-      await API.delete(`rooms/${uid}`);
+      await API.delete(`rooms/${primary}`);
    } catch (error) {
       console.log(error);
       throw error;

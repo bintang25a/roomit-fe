@@ -17,9 +17,14 @@ export default function useConfirmDialog() {
       });
    };
 
-   const handleClick = () => {
+   const handleClickYes = () => {
       setShow(false);
       if (resolver) resolver(true);
+   };
+
+   const handleClickNo = () => {
+      setShow(false);
+      if (resolver) resolver(false);
    };
 
    const ConfirmDialog = () =>
@@ -37,9 +42,17 @@ export default function useConfirmDialog() {
                ) : null}
                <p>{message}</p>
                <div className="confirm-buttons">
-                  <button className="save" onClick={handleClick}>
+                  <button
+                     className={success == undefined ? "yes" : ""}
+                     onClick={handleClickYes}
+                  >
                      Okay
                   </button>
+                  {success == undefined ? (
+                     <button className="no" onClick={handleClickNo}>
+                        No
+                     </button>
+                  ) : null}
                </div>
             </div>
          </div>

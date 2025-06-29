@@ -33,9 +33,9 @@ export const updateMember = async (slug, data) => {
    }
 };
 
-export const deleteMember = async (uid) => {
+export const deleteMember = async (primary) => {
    try {
-      await API.delete(`users/${uid}`);
+      await API.delete(`users/${primary}`);
    } catch (error) {
       console.log(error);
       throw error;

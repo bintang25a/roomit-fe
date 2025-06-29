@@ -26,6 +26,9 @@ import Register from "./pages/auth/register";
 // Admin pages
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./pages/admin";
+import UsersAdmin from "./pages/admin/users";
+import RoomsAdmin from "./pages/admin/rooms";
+import LoansAdmin from "./pages/admin/loans";
 
 export default function App() {
    return (
@@ -72,6 +75,9 @@ export default function App() {
                }
             >
                <Route index element={<Dashboard />} />
+               <Route path="users" element={<UsersAdmin />} />
+               <Route path="rooms" element={<RoomsAdmin />} />
+               <Route path="loans" element={<LoansAdmin />} />
             </Route>
          </Routes>
       </BrowserRouter>
