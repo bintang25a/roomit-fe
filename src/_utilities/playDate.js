@@ -1,5 +1,13 @@
-export const numberDate = () => {
-   return new Date();
+export const numberDateLocale = () => {
+   const now = new Date();
+   const day = String(now.getDate()).padStart(2, "0");
+   const month = String(now.getMonth() + 1).padStart(2, "0");
+   const year = now.getFullYear();
+   const hours = String(now.getHours()).padStart(2, "0");
+   const minutes = String(now.getMinutes()).padStart(2, "0");
+   const seconds = String(now.getSeconds()).padStart(2, "0");
+
+   return day + month + year + hours + minutes + seconds;
 };
 
 export const fullDateLocale = (date) => {
@@ -42,6 +50,22 @@ export const untilWeek = (date) => {
    const selisihHari = selisihMs / (1000 * 60 * 60 * 24);
 
    return selisihHari > -7;
+};
+
+export const countdown = (targetDate) => {
+   const now = new Date();
+   const target = new Date(targetDate);
+
+   const selisihMs = target - now;
+
+   if (selisihMs <= 0) return "over";
+
+   const selisihMenit = Math.floor(selisihMs / (1000 * 60));
+   const hari = Math.floor(selisihMenit / (60 * 24));
+   const jam = Math.floor((selisihMenit % (60 * 24)) / 60);
+   const menit = selisihMenit % 60;
+
+   return `${hari} hari, ${jam} jam, ${menit} menit`;
 };
 
 export const greetings = () => {

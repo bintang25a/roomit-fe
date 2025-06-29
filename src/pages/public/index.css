@@ -272,11 +272,12 @@
 
          h2 {
             font-size: var(--fs-2);
-            font-weight: 800;
+            font-weight: 500;
          }
 
          span {
             color: var(--gray-900);
+            font-weight: 600;
          }
       }
    }
@@ -500,11 +501,12 @@
 
                h2 {
                   font-size: var(--fs-2);
-                  font-weight: 800;
+                  font-weight: 500;
                }
 
                span {
                   color: var(--gray-900);
+                  font-weight: 600;
                }
             }
          }
@@ -829,11 +831,12 @@
 
             h2 {
                font-size: var(--fs-2);
-               font-weight: 800;
+               font-weight: 500;
             }
 
             span {
                color: var(--gray-900);
+               font-weight: 600;
             }
          }
       }
@@ -911,11 +914,18 @@
 
    .footer {
       width: 100%;
-      text-align: center;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       margin-top: var(--spx-32);
 
+      .btn.admin {
+         background-color: var(--btn-info);
+      }
       .btn {
-         width: fit-content;
+         min-width: fit-content;
+         width: var(--spx-128);
+         text-align: center;
          background-color: var(--btn-danger);
          padding: var(--spx-8) var(--spx-32);
          font-size: var(--fs-4);
@@ -926,3 +936,357 @@
    }
 }
 /* ===== Navigation-page style end ===== */
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+   .public-layout .home {
+      padding-top: var(--px-64);
+      padding-bottom: var(--px-256);
+      gap: var(--px-32);
+
+      > .header {
+         gap: var(--px-16);
+         padding: 0 var(--px-128);
+         padding-bottom: var(--px-24);
+         border-bottom-right-radius: var(--px-64);
+         border-bottom-left-radius: var(--px-64);
+
+         .logo img {
+            width: calc(var(--px-48) * 2);
+            transform: translateX(calc(var(--px-8) - var(--px-16)));
+         }
+
+         .date {
+            padding: var(--px-24) var(--px-16);
+            border-radius: var(--px-8);
+         }
+
+         .room-navigation {
+            gap: var(--px-16);
+
+            input[type="search"] {
+               padding: var(--px-24);
+               border-radius: var(--px-16);
+            }
+
+            .btn {
+               padding: var(--px-16);
+               border-radius: var(--px-16);
+            }
+         }
+      }
+
+      .main {
+         padding: var(--px-32) var(--px-128);
+         gap: var(--px-32);
+
+         .container {
+            width: 100%;
+            gap: var(--px-32);
+
+            .card {
+               gap: var(--px-16);
+               padding: var(--px-32);
+               border-radius: var(--px-24);
+               flex: 1;
+               color: var(--primary);
+               transition: 0.3s ease;
+            }
+         }
+      }
+   }
+
+   /* ===== Activity style start ===== */
+   .public-layout .submited-request,
+   .public-layout .approval-status,
+   .public-layout .booked-room,
+   .public-layout .booked-item,
+   .public-layout .room-show,
+   .public-layout .booking,
+   .public-layout .booking-show,
+   .public-layout .schedule {
+      width: 100%;
+      min-height: 50svh;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: var(--px-64);
+      padding-bottom: var(--px-256);
+
+      > .header {
+         gap: var(--px-16);
+         padding: 0 var(--px-128);
+         padding-bottom: var(--px-24);
+
+         .logo img {
+            width: calc(var(--px-48) * 2);
+            transform: translateX(calc(var(--px-16) - var(--px-32)));
+         }
+      }
+   }
+
+   .public-layout .submited-request,
+   .public-layout .approval-status,
+   .public-layout .booked-room {
+      .main {
+         gap: var(--px-16);
+         padding: 0 var(--px-128);
+
+         .list {
+            border-radius: var(--px-24);
+            padding: var(--px-16) var(--px-32);
+
+            img {
+               border-radius: var(--px-16);
+               margin: var(--px-16) 0;
+            }
+         }
+      }
+   }
+   /* ===== Activity style end ===== */
+
+   /* ===== Rooms style start ===== */
+   .public-layout .rooms {
+      padding-top: var(--px-64);
+      padding-bottom: var(--px-128);
+
+      > .header {
+         gap: var(--px-16);
+         padding: 0 var(--px-128);
+         padding-bottom: var(--px-24);
+         border-bottom-right-radius: var(--px-64);
+         border-bottom-left-radius: var(--px-64);
+
+         .logo img {
+            width: calc(var(--px-48) * 2);
+            transform: translateX(calc(var(--px-16) - var(--px-32)));
+         }
+
+         .room-navigation {
+            gap: var(--px-16);
+
+            input[type="search"] {
+               padding: var(--px-16);
+               border-radius: var(--px-16);
+            }
+
+            .btn {
+               padding: var(--px-16);
+               border-radius: var(--px-16);
+            }
+         }
+      }
+
+      .main {
+         gap: var(--px-64);
+         padding: 0 var(--px-128);
+         padding-top: var(--px-32);
+
+         .recomendation {
+            gap: var(--px-16);
+
+            .container {
+               padding: var(--px-48) var(--px-64);
+               border-radius: var(--px-32);
+               gap: var(--px-16);
+
+               .card .image {
+                  padding: var(--px-32) var(--px-48);
+                  border-radius: var(--px-24);
+
+                  img {
+                     border-radius: var(--px-16);
+                  }
+               }
+            }
+         }
+
+         .room-list .container {
+            gap: var(--px-16);
+            border-radius: var(--px-16);
+            padding-bottom: var(--px-16);
+            border-bottom: calc(var(--px-16) / 4) solid var(--primary);
+
+            .list {
+               border-radius: var(--px-24);
+               padding: var(--px-16) var(--px-32);
+
+               img {
+                  border-radius: var(--px-16);
+                  margin: var(--px-16) 0;
+               }
+            }
+         }
+      }
+   }
+
+   .public-layout .room-show .main {
+      gap: var(--px-32);
+      padding: 0 var(--px-128);
+      padding-top: var(--px-32);
+
+      .image {
+         padding: var(--px-48) var(--px-32);
+         border-radius: var(--px-24);
+
+         img {
+            border-radius: var(--px-16);
+         }
+      }
+
+      .detail {
+         padding: var(--px-48);
+         border-radius: var(--px-24);
+      }
+
+      .action {
+         justify-content: space-around;
+
+         .btn {
+            padding: var(--px-16) var(--px-48);
+            border-radius: var(--px-16);
+         }
+      }
+   }
+   /* ===== Rooms style end ===== */
+
+   /* ===== Booking style start ===== */
+   .public-layout .booking .main {
+      gap: var(--px-32);
+      padding: 0 var(--px-128);
+      padding-top: var(--px-32);
+
+      .container {
+         gap: var(--px-24);
+
+         .input {
+            padding: var(--px-24);
+            border-radius: var(--px-16);
+
+            label {
+               padding: var(--px-24);
+            }
+         }
+      }
+
+      .footer {
+         margin-top: var(--px-32);
+
+         .btn {
+            padding: var(--px-16);
+            border-radius: var(--px-16);
+         }
+      }
+   }
+
+   .public-layout .booking-show .main {
+      gap: var(--px-32);
+      padding: 0 var(--px-128);
+      padding-top: var(--px-32);
+
+      .image {
+         padding: var(--spx-48) var(--px-32);
+         border-radius: var(--px-24);
+
+         img {
+            border-radius: var(--px-16);
+         }
+      }
+
+      .detail {
+         padding: var(--px-48);
+         border-radius: var(--px-24);
+
+         table {
+            width: max-content;
+
+            tr td {
+               padding: var(--px-8);
+            }
+         }
+      }
+
+      .action .btn {
+         padding: var(--px-16) var(--px-48);
+         border-radius: var(--px-16);
+      }
+   }
+   /* ===== Booking style end ===== */
+
+   /* ===== Navigation-page style start ===== */
+   .public-layout .schedule .main {
+      gap: var(--px-32);
+      padding: 0 var(--px-128);
+      padding-top: var(--px-32);
+
+      .calender-container {
+         justify-content: center;
+         align-items: center;
+
+         .calender {
+            border-radius: var(--px-16);
+         }
+      }
+
+      .room-list .container {
+         gap: var(--px-16);
+         border-radius: var(--px-16);
+         padding-bottom: var(--px-16);
+         border-bottom: calc(var(--px-16) / 4) solid var(--primary);
+
+         .list {
+            border-radius: var(--px-24);
+            padding: var(--px-16) var(--px-32);
+
+            img {
+               border-radius: var(--px-16);
+               margin: var(--px-16) 0;
+            }
+         }
+      }
+   }
+
+   .public-layout .profile {
+      gap: var(--px-32);
+      padding: var(--px-128);
+      padding-bottom: var(--px-256);
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .header {
+         flex: 1;
+         max-width: 30%;
+         height: calc(var(--px-256) * 1.2);
+         background-color: var(--thirdnary);
+         border-radius: var(--px-16);
+
+         img {
+            width: 50%;
+            height: auto;
+         }
+
+         h2 {
+            display: none;
+         }
+      }
+
+      .main {
+         flex: 1;
+         height: calc(var(--px-256) * 1.2);
+         padding: var(--px-32);
+         justify-content: space-evenly;
+         border-radius: var(--px-16);
+      }
+
+      .footer {
+         margin-top: var(--px-32);
+
+         .btn {
+            padding: var(--px-16) var(--px-64);
+            border-radius: var(--px-24);
+         }
+      }
+   }
+   /* ===== Navigation-page style end ===== */
+}

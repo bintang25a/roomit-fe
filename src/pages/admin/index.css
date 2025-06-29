@@ -1,0 +1,248 @@
+.admin-layout .dashboard {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   padding: var(--px-64);
+   gap: calc(var(--px-64) + var(--px-16));
+
+   > .number-data {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      gap: var(--px-16);
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+
+      > h1 {
+         padding-left: var(--px-8);
+         min-width: 100%;
+         font-weight: 600;
+         font-size: var(--fs-8);
+         color: var(--gray-900);
+         line-height: 1;
+         text-shadow: 1px 1px 2px var(--gray-500);
+      }
+
+      > .left-content {
+         flex: 1;
+         max-width: 40%;
+         height: calc(var(--px-256) * 2);
+         background-color: var(--gray-100);
+         border-radius: var(--px-16);
+         padding: var(--px-32);
+         box-shadow: 1px 1px 3px var(--primary);
+
+         .calender {
+            border-color: transparent;
+            background-color: var(--gray-100);
+            font-size: var(--fs-5);
+         }
+      }
+
+      > .right-content {
+         flex: 1;
+         max-width: 60%;
+         height: calc(var(--px-256) * 2);
+         background-color: var(--gray-100);
+         border-radius: var(--px-16);
+         box-shadow: 1px 1px 3px var(--primary);
+
+         .container {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: var(--px-32);
+            gap: var(--px-32);
+         }
+
+         .card {
+            flex: 1;
+            min-width: 40%;
+            min-height: fit-content;
+            height: calc(var(--px-128) * 1.5);
+            background-color: var(--primary);
+            padding: var(--px-8);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--thirdnary);
+            border-radius: var(--px-16);
+            transition: 0.3s ease;
+
+            h1 {
+               font-size: var(--fs-10);
+               font-weight: 700;
+               line-height: 1;
+            }
+
+            h2 {
+               font-size: var(--fs-7);
+               font-weight: 500;
+            }
+
+            h3 {
+               font-size: var(--fs-5);
+               font-weight: 400;
+            }
+         }
+         .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px var(--gray-500);
+         }
+      }
+   }
+
+   > .coming-event,
+   > .approve {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      gap: var(--px-16);
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+
+      > h1 {
+         padding-left: var(--px-8);
+         min-width: 100%;
+         font-weight: 600;
+         font-size: var(--fs-8);
+         color: var(--gray-900);
+         line-height: 1;
+         text-shadow: 1px 1px 2px var(--gray-500);
+      }
+
+      table {
+         width: 100%;
+         table-layout: fixed;
+         border-collapse: collapse;
+         box-shadow: 0px 1px 4px var(--gray-700);
+         border-radius: var(--px-8);
+         overflow: hidden;
+      }
+
+      table.coming-event {
+         tr {
+            display: flex;
+
+            th {
+               background-color: var(--primary);
+               color: var(--gray-100);
+               font-weight: 600;
+            }
+
+            td {
+               font-weight: 500;
+               background-color: var(--secondary);
+               text-overflow: ellipsis;
+               overflow: hidden;
+               white-space: nowrap;
+               transition: 0.2s ease;
+            }
+
+            td,
+            th {
+               flex: 1;
+               padding: var(--px-8) var(--px-24);
+               font-size: var(--fs-3);
+               text-align: center;
+            }
+
+            th,
+            td {
+               text-align: left;
+               max-width: 20%;
+            }
+            th:nth-child(2),
+            td:nth-child(2) {
+               max-width: 40%;
+            }
+            th:nth-child(2) {
+               text-align: center;
+            }
+
+            td.footer {
+               max-width: 100%;
+               text-align: center;
+               color: var(--btn-danger);
+            }
+         }
+         tr:hover td {
+            background-color: var(--thirdnary);
+            cursor: pointer;
+         }
+
+         tfoot tr.footer td {
+            max-width: 100%;
+            text-align: center;
+            border-top: calc(var(--px-8) / 4) solid var(--gray-100);
+            color: var(--primary);
+            cursor: pointer;
+         }
+      }
+
+      table.approve {
+         tr {
+            display: flex;
+
+            th {
+               background-color: var(--primary);
+               color: var(--gray-100);
+               font-weight: 600;
+            }
+
+            td {
+               font-weight: 500;
+               background-color: var(--secondary);
+               text-overflow: ellipsis;
+               overflow: hidden;
+               white-space: nowrap;
+               transition: 0.2s ease;
+            }
+
+            td,
+            th {
+               flex: 1;
+               padding: var(--px-8) var(--px-24);
+               font-size: var(--fs-3);
+               text-align: center;
+            }
+
+            th:nth-child(3),
+            td:nth-child(3),
+            th:last-child,
+            td:last-child {
+               max-width: 30%;
+            }
+            th:first-child,
+            td:first-child,
+            th:nth-child(2),
+            td:nth-child(2) {
+               max-width: 20%;
+            }
+
+            td.footer {
+               max-width: 100%;
+               text-align: center;
+               color: var(--btn-danger);
+            }
+         }
+         tr:hover td {
+            background-color: var(--thirdnary);
+            cursor: pointer;
+         }
+
+         tfoot tr.footer td {
+            max-width: 100%;
+            text-align: center;
+            border-top: calc(var(--px-8) / 4) solid var(--gray-100);
+            color: var(--primary);
+            cursor: pointer;
+         }
+      }
+   }
+}

@@ -32,7 +32,14 @@ export default function Login() {
       try {
          await login(loginData);
          loading(false);
-         navigate("/", { replace: true });
+
+         const user = JSON.parse(localStorage.getItem("user"));
+
+         if (user.role === "admin") {
+            return navigate("/admin", { replace: true });
+         }
+
+         return navigate("/", { replace: true });
       } catch (error) {
          loading(false);
          confirm("Login failed", false);

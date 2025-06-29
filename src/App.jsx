@@ -23,6 +23,10 @@ import ShowBooking from "./pages/public/booking/show";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 
+// Admin pages
+import AdminLayout from "./layouts/AdminLayout";
+import Dashboard from "./pages/admin";
+
 export default function App() {
    return (
       <BrowserRouter>
@@ -57,6 +61,17 @@ export default function App() {
                   <Route path="show/:slug" element={<ShowBooking />} />
                   <Route path=":slug" element={<AddBooking />} />
                </Route>
+            </Route>
+
+            <Route
+               path="admin"
+               element={
+                  <ProtectedRoute requireAdmin={true}>
+                     <AdminLayout />
+                  </ProtectedRoute>
+               }
+            >
+               <Route index element={<Dashboard />} />
             </Route>
          </Routes>
       </BrowserRouter>

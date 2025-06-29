@@ -67,7 +67,9 @@ export default function ShowBooking() {
                         <td>Status</td>
                         <td>:</td>
                         <td>
-                           <span className={loan.progres}>{loan?.progres}</span>
+                           <span className={loan?.progres}>
+                              {loan?.progres}
+                           </span>
                         </td>
                      </tr>
                   </tbody>

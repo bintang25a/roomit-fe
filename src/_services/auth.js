@@ -1,5 +1,4 @@
 import API from "../_api";
-import message from "../_utilities/errorMessage";
 
 // Fungsi Login
 export const login = async (data) => {
@@ -14,33 +13,37 @@ export const login = async (data) => {
       return user;
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
 
 // Fungsi Validasi session (pakai /me endpoint)
 export const validateSession = async () => {
-   if (typeof window === "undefined") return false;
+   if (typeof window === "undefined") return { isValid: false, user: null };
 
    try {
       const response = await API.get("/me", {
          withCredentials: true,
       });
 
-      localStorage.setItem("user", JSON.stringify(response.data));
-      return true;
+      const user = response.data;
+      localStorage.setItem("user", JSON.stringify(user));
+
+      return { isValid: true, user };
    } catch (error) {
       console.error(
          "Session tidak valid:",
          error.response?.data || error.message
       );
       localStorage.removeItem("user");
-      return false;
+      return { isValid: false, user: null };
    }
 };
 
+// Dapat digunakan untuk cek cepat login
 export const isAuthenticated = async () => {
-   return await validateSession();
+   const { isValid } = await validateSession();
+   return isValid;
 };
 
 // Fungsi Logout
@@ -55,6 +58,6 @@ export const logout = async () => {
       return response.data;
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };

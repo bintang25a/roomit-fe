@@ -1,4 +1,4 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, Link } from "react-router-dom";
 import { logout } from "../../../_services/auth";
 import profilePhoto from "/profile.png";
 
@@ -50,6 +50,11 @@ export default function Profile() {
             <button className="btn" onClick={handleLogout}>
                Logout
             </button>
+            {user.role === "admin" ? (
+               <Link to={"/admin"} className="btn admin">
+                  Admin
+               </Link>
+            ) : null}
          </div>
       </main>
    );

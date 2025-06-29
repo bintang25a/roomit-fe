@@ -19,6 +19,13 @@ export default function PublicLayout() {
    const [rooms, setRooms] = useState([]);
    const [loans, setLoans] = useState([]);
 
+   const fetchUser = async () => {
+      const [userData] = await Promise.all([
+         showMember(JSON.parse(localStorage.getItem("user")).slug),
+      ]);
+      setUser(userData);
+   };
+
    useEffect(() => {
       const fetchData = async () => {
          const [usersData, roomsData, loansData] = await Promise.all([
@@ -34,10 +41,6 @@ export default function PublicLayout() {
 
       setTimeout(() => {
          const localUser = JSON.parse(localStorage.getItem("user"));
-         const fetchUser = async () => {
-            const [userData] = await Promise.all([showMember(localUser.slug)]);
-            setUser(userData);
-         };
 
          if (localUser) {
             fetchUser();
@@ -58,6 +61,7 @@ export default function PublicLayout() {
                   loans,
                   confirm,
                   loading,
+                  fetchUser,
                }}
             />
             <Navbar />

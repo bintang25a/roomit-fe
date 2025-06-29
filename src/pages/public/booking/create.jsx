@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { createLoan } from "../../../_services/loans";
+import { numberDateLocale } from "../../../_utilities/playDate";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function AddBooking() {
@@ -18,7 +19,7 @@ export default function AddBooking() {
    };
    const [formData, setFormData] = useState(newForm);
    const { slug } = useParams();
-   const { rooms, loading, confirm } = useOutletContext();
+   const { rooms, loading, confirm, fetchUser } = useOutletContext();
    const bookRoom = rooms.find((room) => room.slug === slug);
 
    const handleChange = (e) => {
@@ -28,18 +29,6 @@ export default function AddBooking() {
          ...formData,
          [name]: value,
       });
-   };
-
-   const numberDate = () => {
-      const now = new Date();
-      const day = String(now.getDate()).padStart(2, "0");
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const year = now.getFullYear();
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
-      const seconds = String(now.getSeconds()).padStart(2, "0");
-
-      return day + month + year + hours + minutes + seconds;
    };
 
    const navigate = useNavigate();
@@ -56,9 +45,9 @@ export default function AddBooking() {
       let kode_ruangan;
       if (slug) {
          kode_ruangan = bookRoom.kode_ruangan;
-         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDate()}`;
+         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDateLocale()}`;
       } else {
-         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDate()}`;
+         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDateLocale()}`;
       }
 
       try {
@@ -74,6 +63,7 @@ export default function AddBooking() {
          await createLoan(data);
          loading(false);
          await confirm("Booking form successfully submited", true);
+         fetchUser();
          setFormData(newForm);
          navigate("/", { replace: true });
       } catch (error) {

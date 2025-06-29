@@ -1,5 +1,4 @@
 import API from "../_api";
-import message from "../_utilities/errorMessage";
 
 export const getLoans = async () => {
    const response = await API.get("/loans");
@@ -12,7 +11,7 @@ export const showLoan = async (slug) => {
       return response.data;
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
 
@@ -22,26 +21,23 @@ export const createLoan = async (data) => {
    } catch (error) {
       console.log(error);
       throw error;
-      // throw message(error);
    }
 };
 
 export const updateLoan = async (slug, data) => {
    try {
-      const response = await API.post(`loans/${slug}`, data);
-      return response.data;
+      await API.patch(`loans/${slug}`, data);
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
 
 export const deleteLoan = async (uid) => {
    try {
-      const response = await API.delete(`loans/${uid}`);
-      return response.data;
+      await API.delete(`loans/${uid}`);
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };

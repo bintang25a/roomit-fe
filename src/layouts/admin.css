@@ -1,0 +1,174 @@
+.admin-layout {
+   width: 100%;
+   min-height: 100svh;
+   position: relative;
+   display: flex;
+   align-items: flex-start;
+   justify-content: center;
+
+   .sidebar {
+      width: 20vw;
+      height: 100vh;
+      background-color: var(--gray-800);
+      position: sticky;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .top-content {
+         width: 100%;
+         height: fit-content;
+         display: flex;
+         flex-direction: column;
+         padding: var(--px-16);
+         gap: var(--px-32);
+
+         .logo {
+            width: 100%;
+            border-bottom: calc(var(--px-8) / 4) solid var(--gray-100);
+            border-radius: var(--px-8);
+
+            img {
+               margin: auto;
+               aspect-ratio: 1/1;
+               width: 40%;
+               filter: brightness(0) invert(1);
+            }
+         }
+
+         .group {
+            width: 100%;
+            border-bottom: calc(var(--px-8) / 4) solid var(--gray-100);
+            color: var(--gray-200);
+            border-radius: calc(var(--px-8) / 2);
+
+            .header {
+               display: flex;
+               gap: var(--px-8);
+               text-align: center;
+               justify-content: flex-start;
+               font-size: var(--fs-4);
+               font-weight: 500;
+
+               .icon {
+                  aspect-ratio: 1/1;
+                  height: 100%;
+                  font-size: var(--fs-5);
+               }
+            }
+
+            ul {
+               margin-top: var(--px-8);
+               padding-bottom: var(--px-16);
+               padding-left: var(--px-48);
+               display: flex;
+               flex-direction: column;
+               gap: calc(var(--px-8) / 2);
+
+               li {
+                  font-size: var(--fs-3);
+                  font-weight: 400;
+                  a {
+                     color: var(--gray-300);
+                  }
+               }
+            }
+         }
+      }
+
+      .bottom-content {
+         width: 100%;
+         text-align: center;
+         padding: var(--px-8) 0;
+
+         h1 {
+            font-size: calc(var(--fs-1) * 2);
+            font-weight: 400;
+            color: var(--gray-100);
+         }
+      }
+   }
+
+   > .right-content {
+      width: 80vw;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: var(--thirdnary);
+
+      > .navbar {
+         width: 100%;
+         min-height: 64px;
+         height: var(--px-64);
+         background-color: var(--gray-100);
+         overflow: hidden;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: var(--px-8) var(--px-32);
+         box-shadow: 1px 1px 3px var(--secondary);
+         position: sticky;
+         top: 0;
+         z-index: 1000;
+
+         .left-content {
+            width: fit-content;
+            padding: var(--px-8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--px-16);
+            border: calc(var(--px-8) / 3) solid var(--primary);
+            border-radius: var(--px-8);
+
+            a,
+            button {
+               aspect-ratio: 1/1;
+               flex: 1;
+               overflow: hidden;
+               transition: 0.3s ease;
+
+               .icon {
+                  width: 100%;
+                  height: 100%;
+                  font-size: var(--fs-8);
+                  color: var(--primary);
+                  background-color: var(--gray-100);
+                  border-radius: var(--px-8);
+               }
+            }
+            a:hover,
+            button:hover {
+               cursor: pointer;
+               .icon {
+                  background-color: var(--secondary);
+               }
+            }
+         }
+
+         .right-content {
+            width: fit-content;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: var(--px-8);
+
+            h1 {
+               font-size: var(--fs-5);
+               font-weight: 600;
+               color: var(--gray-800);
+            }
+
+            img {
+               aspect-ratio: 1/1;
+               height: var(--px-56);
+               width: auto;
+            }
+         }
+      }
+   }
+}

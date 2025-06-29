@@ -43,19 +43,6 @@
          }
       }
 
-      > .footer {
-         width: 100%;
-         padding: var(--px-12);
-         background-color: var(--primary);
-
-         h1 {
-            text-align: center;
-            font-size: var(--fs-3);
-            font-weight: 600;
-            color: var(--gray-900);
-         }
-      }
-
       .btn-back {
          width: fit-content;
          height: 100%;

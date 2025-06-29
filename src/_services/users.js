@@ -1,5 +1,4 @@
 import API from "../_api";
-import message from "../_utilities/errorMessage";
 
 export const getMembers = async () => {
    const response = await API.get("/users");
@@ -12,7 +11,7 @@ export const showMember = async (slug) => {
       return response.data;
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
 
@@ -22,26 +21,23 @@ export const createMember = async (data) => {
    } catch (error) {
       console.log(error);
       throw error;
-      // throw message(error);
    }
 };
 
 export const updateMember = async (slug, data) => {
    try {
-      const response = await API.post(`users/${slug}`, data);
-      return response.data;
+      await API.patch(`users/${slug}`, data);
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
 
 export const deleteMember = async (uid) => {
    try {
-      const response = await API.delete(`users/${uid}`);
-      return response.data;
+      await API.delete(`users/${uid}`);
    } catch (error) {
       console.log(error);
-      throw message(error);
+      throw error;
    }
 };
