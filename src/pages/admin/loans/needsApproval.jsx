@@ -1,8 +1,8 @@
 import Calendar from "react-calendar";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import { MdPostAdd } from "react-icons/md";
 import { fullDate, fullDateLocale } from "../../../_utilities/playDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getImageUrl } from "../../../_services/rooms";
 import { updateLoan } from "../../../_services/loans";
 
@@ -32,6 +32,14 @@ export default function NeedsApproval() {
       const loan = loans?.find((loan) => loan?.nomor_peminjaman === id);
       setDetailLoan(loan);
    };
+
+   const { slug } = useParams();
+   useEffect(() => {
+      if (slug) {
+         const loan = loans?.find((loan) => loan?.slug === slug);
+         setDetailLoan(loan);
+      }
+   }, [slug, loans]);
 
    const handleSubmit = async (id, isAccept) => {
       try {

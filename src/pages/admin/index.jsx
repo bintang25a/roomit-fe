@@ -1,5 +1,10 @@
-import { useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+   Link,
+   useLocation,
+   useNavigate,
+   useOutletContext,
+} from "react-router-dom";
 import { MdHome } from "react-icons/md";
 import { countdown, fullDate } from "../../_utilities/playDate";
 import Calendar from "react-calendar";
@@ -20,13 +25,29 @@ export default function Dashboard() {
             : true)
    );
 
-   const requestLoans = loans?.filter(
-      (loan) => loan.progres !== "accepted" || loan.progres !== "rejected"
-   );
+   const requestLoans = loans?.filter((loan) => loan.progres === "onprogres");
 
    const handleMaxRow = () => {
       maxRow == 5 ? setMaxRow(loans.length) : setMaxRow(5);
    };
+
+   const location = useLocation();
+   useEffect(() => {
+      if (location.state?.scrollTo) {
+         const vwToPx = (vw) => (window.innerWidth * vw) / 100;
+
+         const element = document.getElementById(location.state.scrollTo);
+         if (element) {
+            const yOffset = -vwToPx(5);
+            const y =
+               element.getBoundingClientRect().top +
+               window.pageYOffset +
+               yOffset;
+
+            window.scrollTo({ top: y, behavior: "smooth" });
+         }
+      }
+   }, [location.state?.scrollTo]);
 
    return (
       <main className="dashboard">
@@ -67,7 +88,7 @@ export default function Dashboard() {
             </div>
          </div>
 
-         <div className="coming-event">
+         <div className="coming-event" id="come">
             <h1>Coming event</h1>
             <table className="coming-event">
                <thead>
@@ -112,7 +133,7 @@ export default function Dashboard() {
             </table>
          </div>
 
-         <div className="approve">
+         <div className="approve" id="aprv">
             <h1>Need approval</h1>
             <table className="approve">
                <thead>
@@ -129,9 +150,12 @@ export default function Dashboard() {
                         <tr
                            key={loan?.nomor_peminjaman}
                            onDoubleClick={() =>
-                              navigate(`/admin/booking/${loan?.slug}`, {
-                                 replace: true,
-                              })
+                              navigate(
+                                 `/admin/loans/needs-approve/${loan?.slug}`,
+                                 {
+                                    replace: true,
+                                 }
+                              )
                            }
                            title="Double click to go"
                         >
@@ -153,7 +177,9 @@ export default function Dashboard() {
                   <tr
                      className="footer"
                      onClick={() =>
-                        navigate("/admin/loans/approve", { replace: true })
+                        navigate("/admin/loans/needs-approve", {
+                           replace: true,
+                        })
                      }
                   >
                      <td colSpan={4}>View all approval request</td>

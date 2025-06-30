@@ -16,13 +16,19 @@ const Sidebar = forwardRef(({ isOpen, setIsOpen }, ref) => {
                </div>
                <ul>
                   <li onClick={() => setIsOpen(false)}>
-                     <Link to={"/admin"}>Number data</Link>
+                     <Link to={"/admin"} state={{ scrollTo: "top" }}>
+                        Number data
+                     </Link>
                   </li>
                   <li onClick={() => setIsOpen(false)}>
-                     <Link to={"/admin"}>Coming event</Link>
+                     <Link to={"/admin"} state={{ scrollTo: "come" }}>
+                        Coming event
+                     </Link>
                   </li>
                   <li onClick={() => setIsOpen(false)}>
-                     <Link to={"/admin"}>Approve request</Link>
+                     <Link to={"/admin"} state={{ scrollTo: "aprv" }}>
+                        Approve request
+                     </Link>
                   </li>
                </ul>
             </div>

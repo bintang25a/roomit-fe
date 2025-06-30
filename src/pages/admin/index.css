@@ -32,11 +32,17 @@
          border-radius: var(--px-16);
          padding: var(--px-32);
          box-shadow: 1px 1px 3px var(--primary);
+         overflow: auto;
 
          .calender {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: var(--px-8);
+            font-size: var(--rfs-5);
             border-color: transparent;
             background-color: var(--gray-100);
-            font-size: var(--rfs-5);
          }
       }
 

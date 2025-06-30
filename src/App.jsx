@@ -85,6 +85,10 @@ export default function App() {
                   element={<LoansAdmin isAddSetting={true} />}
                />
                <Route path="loans/needs-approve" element={<NeedsApproval />} />
+               <Route
+                  path="loans/needs-approve/:slug"
+                  element={<NeedsApproval />}
+               />
             </Route>
          </Routes>
       </BrowserRouter>

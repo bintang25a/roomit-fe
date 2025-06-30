@@ -71,7 +71,7 @@ export default function AdminLayout() {
       <>
          <div className="admin-layout">
             <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} ref={sidebarRef} />
-            <div className="right-content">
+            <div className="right-content" id="top">
                <Navbar
                   user={user}
                   fetchData={fetchData}
