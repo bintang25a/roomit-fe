@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import { fullDate } from "../../../_utilities/playDate";
+import { countdown, fullDate } from "../../../_utilities/playDate";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -10,10 +10,15 @@ export default function Schedule() {
 
    const { loans } = useOutletContext();
    const filteredLoan = loans?.filter((loan) => {
-      if (!dateValue && loan.progres === "") return true;
+      if (
+         !dateValue &&
+         loan?.progres === "accepted" &&
+         countdown(loan?.tanggal_pemakaian) != "over"
+      )
+         return true;
       return (
-         fullDate(loan.tanggal_pemakaian) === fullDate(dateValue) &&
-         loan.progres === ""
+         fullDate(loan?.tanggal_pemakaian) === fullDate(dateValue) &&
+         loan?.progres === "accepted"
       );
    });
 
@@ -35,8 +40,8 @@ export default function Schedule() {
                   {loans ? (
                      filteredLoan.map((loan) => (
                         <Link
-                           key={loan.nomor_peminjaman}
-                           to={`/booking/show/${loan.slug}`}
+                           key={loan?.nomor_peminjaman}
+                           to={`/booking/show/${loan?.slug}`}
                            className="list"
                         >
                            <h1>{loan?.room?.nama}</h1>

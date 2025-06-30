@@ -5,7 +5,7 @@ import ActivityHeader from "../../../components/public/ActivityHeader";
 export default function ApprovalStatus() {
    const { user } = useOutletContext();
    const loans = user?.loans?.filter((loan) =>
-      untilWeek(loan.tanggal_pengajuan)
+      untilWeek(loan?.tanggal_pengajuan)
    );
 
    return (
@@ -18,14 +18,14 @@ export default function ApprovalStatus() {
             {loans ? (
                loans.map((loan) => (
                   <Link
-                     key={loan.nomor_peminjaman}
-                     to={`/booking/show/${loan.slug}`}
+                     key={loan?.nomor_peminjaman}
+                     to={`/booking/show/${loan?.slug}`}
                      className="list"
                   >
-                     <h1>{loan.room?.nama}</h1>
+                     <h1>{loan?.room?.nama}</h1>
                      <h2>
                         <span>Pengajuan:</span> {fullDate()} |{" "}
-                        <span>Status:</span> {loan.progres}
+                        <span>Status:</span> {loan?.progres}
                      </h2>
                   </Link>
                ))

@@ -99,7 +99,7 @@
 
          h1 {
             text-align: center;
-            font-size: var(--fs-10);
+            font-size: var(--rfs-10);
             font-weight: 700;
             color: var(--white);
          }

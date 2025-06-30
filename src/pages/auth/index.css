@@ -96,8 +96,12 @@
       height: fit-content;
       gap: var(--px-32);
 
+      .container .input {
+         font-size: var(--rfs-4);
+      }
+
       .logo {
-         width: 20%;
+         width: 15%;
       }
 
       form {
@@ -120,6 +124,7 @@
          margin-top: var(--px-32);
 
          .btn {
+            font-size: var(--rfs-4);
             padding: var(--px-8) var(--px-40);
             border-radius: var(--px-12);
             cursor: pointer;
@@ -128,6 +133,10 @@
 
       .footer .btn {
          margin-top: var(--px-12);
+         font-size: var(--rfs-3);
+      }
+      .footer h1 {
+         font-size: var(--fs-2);
       }
    }
 }

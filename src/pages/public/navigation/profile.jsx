@@ -50,7 +50,7 @@ export default function Profile() {
             <button className="btn" onClick={handleLogout}>
                Logout
             </button>
-            {user.role === "admin" ? (
+            {user?.role === "admin" ? (
                <Link to={"/admin"} className="btn admin">
                   Admin
                </Link>

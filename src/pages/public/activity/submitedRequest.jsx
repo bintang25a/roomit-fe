@@ -14,14 +14,14 @@ export default function SubmitedRequest() {
          <div className="main">
             {user?.loans?.map((loan) => (
                <Link
-                  key={loan.nomor_peminjaman}
-                  to={`/booking/show/${loan.slug}`}
+                  key={loan?.nomor_peminjaman}
+                  to={`/booking/show/${loan?.slug}`}
                   className="list"
                >
-                  <h1>{loan.room?.nama}</h1>
+                  <h1>{loan?.room?.nama}</h1>
                   <h2>
                      <span>Tanggal peminjaman:</span>{" "}
-                     {fullDateLocale(loan.tanggal_pemakaian)}
+                     {fullDateLocale(loan?.tanggal_pemakaian)}
                   </h2>
                </Link>
             ))}

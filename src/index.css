@@ -17,19 +17,21 @@
    --gray-800: #1e293b;
    --gray-900: #0f172a;
 
-   --px-8: 0.5vw;
-   --px-12: 0.75vw;
-   --px-16: 1vw;
-   --px-24: 1.5vw;
-   --px-32: 2vw;
-   --px-40: 2.5vw;
-   --px-48: 3vw;
-   --px-56: 3.5vw;
-   --px-64: 4vw;
-   --px-128: 8vw;
-   --px-192: 12vw;
-   --px-256: 16vw;
+   /* === Satuan pixel untuk desktop === */
+   --px-8: clamp(4px, 0.5vw, 0.5vw);
+   --px-12: clamp(6px, 0.75vw, 0.75vw);
+   --px-16: clamp(8px, 1vw, 1vw);
+   --px-24: clamp(12px, 1.5vw, 1.5vw);
+   --px-32: clamp(16px, 2vw, 2vw);
+   --px-40: clamp(20px, 2.5vw, 2.5vw);
+   --px-48: clamp(24px, 3vw, 3vw);
+   --px-56: clamp(28px, 3.5vw, 3.5vw);
+   --px-64: clamp(32px, 4vw, 4vw);
+   --px-128: clamp(64px, 8vw, 8vw);
+   --px-192: clamp(96px, 12vw, 12vw);
+   --px-256: clamp(128px, 16vw, 16vw);
 
+   /* === Satuan pixel untuk mobile === */
    --spx-8: 1vh;
    --spx-12: 1.5vh;
    --spx-16: 2vh;
@@ -43,18 +45,33 @@
    --spx-192: 24vh;
    --spx-256: 32vh;
 
-   --fs-1: clamp(4px, 0.33vw, 0.675rem);
-   --fs-2: clamp(8px, 0.67vw, 1.25rem);
-   --fs-3: clamp(12px, 0.88vw, 1.75rem);
-   --fs-4: clamp(16px, 1.17vw, 2.25rem);
-   --fs-5: clamp(20px, 1.47vw, 3rem);
-   --fs-6: clamp(24px, 1.76vw, 3.5rem);
-   --fs-7: clamp(28px, 2.05vw, 4rem);
-   --fs-8: clamp(32px, 2.34vw, 5rem);
-   --fs-9: clamp(40px, 2.93vw, 6rem);
-   --fs-10: clamp(48px, 3.52vw, 7rem);
-   --fs-11: clamp(56px, 4.1vw, 8rem);
-   --fs-12: clamp(64px, 4.69vw, 9rem);
+   /* === Satuan font responsive === */
+   --rfs-1: clamp(2px, 0.33vw, 0.675rem);
+   --rfs-2: clamp(4px, 0.67vw, 1.25rem);
+   --rfs-3: clamp(6px, 0.88vw, 1.75rem);
+   --rfs-4: clamp(8px, 1.17vw, 2.25rem);
+   --rfs-5: clamp(10px, 1.47vw, 3rem);
+   --rfs-6: clamp(12px, 1.76vw, 3.5rem);
+   --rfs-7: clamp(14px, 2.05vw, 4rem);
+   --rfs-8: clamp(16px, 2.34vw, 5rem);
+   --rfs-9: clamp(20px, 2.93vw, 6rem);
+   --rfs-10: clamp(24px, 3.52vw, 7rem);
+   --rfs-11: clamp(28px, 4.1vw, 8rem);
+   --rfs-12: clamp(32px, 4.69vw, 9rem);
+
+   /* === Satuan font lebih besar === */
+   --fs-1: calc(var(--rfs-1) * 2);
+   --fs-2: calc(var(--rfs-2) * 2);
+   --fs-3: calc(var(--rfs-3) * 2);
+   --fs-4: calc(var(--rfs-4) * 2);
+   --fs-5: calc(var(--rfs-5) * 2);
+   --fs-6: calc(var(--rfs-6) * 2);
+   --fs-7: calc(var(--rfs-7) * 2);
+   --fs-8: calc(var(--rfs-8) * 2);
+   --fs-9: calc(var(--rfs-9) * 2);
+   --fs-10: calc(var(--rfs-10) * 2);
+   --fs-11: calc(var(--rfs-11) * 2);
+   --fs-12: calc(var(--rfs-12) * 2);
 
    --btn-danger: #dc3545;
    --btn-warning: #f59e0b;
@@ -140,8 +157,8 @@
          aspect-ratio: 1/1;
          width: var(--spx-64);
          height: var(--spx-64);
-         border: var(--px-32) solid var(--gray-100);
-         border-top: var(--px-32) solid var(--secondary);
+         border: var(--px-8) solid var(--gray-100);
+         border-top: var(--px-8) solid var(--secondary);
          border-radius: 50%;
          animation: spin 1s linear infinite;
          margin: auto;

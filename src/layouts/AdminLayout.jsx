@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { getMembers, showMember } from "../_services/users";
 import { getRooms } from "../_services/rooms";
@@ -17,6 +17,24 @@ export default function AdminLayout() {
    const [user, setUser] = useState({});
    const [rooms, setRooms] = useState([]);
    const [loans, setLoans] = useState([]);
+
+   const [isOpen, setIsOpen] = useState(false);
+   const sidebarRef = useRef(null);
+   const handleOpen = () => {
+      setIsOpen((prev) => !prev);
+   };
+   useEffect(() => {
+      const handleClickOutside = (event) => {
+         if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            setIsOpen(false);
+         }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
 
    const fetchUser = async () => {
       const [userData] = await Promise.all([
@@ -52,9 +70,13 @@ export default function AdminLayout() {
    return (
       <>
          <div className="admin-layout">
-            <Sidebar />
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} ref={sidebarRef} />
             <div className="right-content">
-               <Navbar user={user} fetchData={fetchData} />
+               <Navbar
+                  user={user}
+                  fetchData={fetchData}
+                  handleOpen={handleOpen}
+               />
                <Outlet
                   context={{
                      user,

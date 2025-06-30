@@ -131,7 +131,7 @@ export default function Loans({ isAddSetting = false }) {
       setKode("");
 
       if (isAddSetting) {
-         navigate("/admin/loans", { replace: true });
+         navigate(-1, { replace: true });
       }
    };
    const handleChange = (e) => {

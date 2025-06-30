@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useOutletContext, useParams } from "react-router-dom";
-import aula from "/aula.jpg";
 import logo from "/roomit-logo.png";
+import { getImageUrl } from "../../../_services/rooms";
 
 export default function Rooms() {
    const { rooms } = useOutletContext();
    const { query } = useParams();
+
+   const djoeanda = rooms?.find((room) => room?.kode_ruangan === "A-200-DK");
+   const battani = rooms?.find((room) => room?.kode_ruangan === "B-101-AB");
 
    const [searchTerm, setSearchTerm] = useState("");
    useEffect(() => {
@@ -16,8 +19,8 @@ export default function Rooms() {
 
    const filteredRoom = rooms?.filter(
       (room) =>
-         room.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         Number(room.kapasitas) >= Number(searchTerm)
+         room?.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         Number(room?.kapasitas) >= Number(searchTerm)
    );
 
    const handleChange = (e) => {
@@ -57,18 +60,24 @@ export default function Rooms() {
                <div className="recomendation">
                   <h1>Recomendation</h1>
                   <div className="container">
-                     <div className="card">
-                        <h1>Aula Djoeanda</h1>
+                     <Link
+                        to={`/rooms/show/${djoeanda?.slug}`}
+                        className="card"
+                     >
+                        <h1>{djoeanda?.nama}</h1>
                         <div className="image">
-                           <img src={aula} alt="" />
+                           <img
+                              src={getImageUrl(djoeanda?.gambar)}
+                              alt={djoeanda?.nama}
+                           />
                         </div>
-                     </div>
-                     <div className="card">
-                        <h1>Aula Djoeanda</h1>
+                     </Link>
+                     <Link to={`/rooms/show/${battani?.slug}`} className="card">
+                        <h1>{battani?.nama}</h1>
                         <div className="image">
-                           <img src={aula} alt="" />
+                           <img src={getImageUrl(battani?.gambar)} alt="" />
                         </div>
-                     </div>
+                     </Link>
                   </div>
                </div>
             ) : null}
@@ -78,13 +87,13 @@ export default function Rooms() {
                   {rooms
                      ? filteredRoom.map((room) => (
                           <Link
-                             key={room.kode_ruangan}
-                             to={`/rooms/show/${room.slug}`}
+                             key={room?.kode_ruangan}
+                             to={`/rooms/show/${room?.slug}`}
                              className="list"
                           >
-                             <h1>{room.nama}</h1>
+                             <h1>{room?.nama}</h1>
                              <h2>
-                                <span>Capacity:</span> {room.kapasitas} People
+                                <span>Capacity:</span> {room?.kapasitas} People
                              </h2>
                           </Link>
                        ))

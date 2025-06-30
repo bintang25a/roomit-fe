@@ -1,10 +1,11 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { MdHome, MdLayers, MdWorkspacesOutline } from "react-icons/md";
 import logo from "/roomit-logo.png";
 
-export default function Sidebar() {
+const Sidebar = forwardRef(({ isOpen, setIsOpen }, ref) => {
    return (
-      <aside className="sidebar">
+      <aside ref={ref} className={isOpen ? "sidebar active" : "sidebar"}>
          <div className="top-content">
             <div className="logo">
                <img src={logo} alt="" />
@@ -14,13 +15,13 @@ export default function Sidebar() {
                   <MdHome className="icon" /> Home
                </div>
                <ul>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin"}>Number data</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin"}>Coming event</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin"}>Approve request</Link>
                   </li>
                </ul>
@@ -30,13 +31,13 @@ export default function Sidebar() {
                   <MdLayers className="icon" /> Pages
                </div>
                <ul>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/users"}>Users</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/rooms"}>Rooms</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/loans"}>Loans </Link>
                   </li>
                </ul>
@@ -46,15 +47,15 @@ export default function Sidebar() {
                   <MdWorkspacesOutline className="icon" /> Workspace
                </div>
                <ul>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/loans/needs-approve"}>
                         Needs approval
                      </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/loans/make-loan"}>Make loan</Link>
                   </li>
-                  <li>
+                  <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/users/profile"}>Profile</Link>
                   </li>
                </ul>
@@ -65,4 +66,6 @@ export default function Sidebar() {
          </div>
       </aside>
    );
-}
+});
+
+export default Sidebar;

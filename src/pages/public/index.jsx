@@ -34,7 +34,7 @@ export default function Home() {
                   className="btn"
                   to={query ? `/rooms/${query.trim()}` : "/rooms"}
                >
-                  Book a Room
+                  {query ? "Search Room" : "Book a Room"}
                </Link>
             </div>
             <Link to={"/booked-item"} className="item-navigation">

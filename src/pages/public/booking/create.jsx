@@ -20,7 +20,7 @@ export default function AddBooking() {
    const [formData, setFormData] = useState(newForm);
    const { slug } = useParams();
    const { rooms, loading, confirm, fetchUser } = useOutletContext();
-   const bookRoom = rooms.find((room) => room.slug === slug);
+   const bookRoom = rooms.find((room) => room?.slug === slug);
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -37,7 +37,7 @@ export default function AddBooking() {
       loading(true);
       const user = JSON.parse(localStorage.getItem("user"));
 
-      const id_peminjam = user.uid;
+      const id_peminjam = user?.uid;
       const tanggal_pengajuan = new Date();
       const progres = "onprogres";
 
@@ -45,9 +45,13 @@ export default function AddBooking() {
       let kode_ruangan;
       if (slug) {
          kode_ruangan = bookRoom.kode_ruangan;
-         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDateLocale()}`;
+         nomor_peminjaman = `${kode_ruangan}-${
+            user?.uid
+         }-${numberDateLocale()}`;
       } else {
-         nomor_peminjaman = `${kode_ruangan}-${user.uid}-${numberDateLocale()}`;
+         nomor_peminjaman = `${kode_ruangan}-${
+            user?.uid
+         }-${numberDateLocale()}`;
       }
 
       try {
@@ -98,10 +102,10 @@ export default function AddBooking() {
 
                         {rooms.map((room) => (
                            <option
-                              key={room.kode_ruangan}
-                              value={room.kode_ruangan}
+                              key={room?.kode_ruangan}
+                              value={room?.kode_ruangan}
                            >
-                              {room.nama}
+                              {room?.nama}
                            </option>
                         ))}
                      </select>

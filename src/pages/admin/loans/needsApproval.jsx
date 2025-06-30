@@ -68,7 +68,7 @@ export default function NeedsApproval() {
    return (
       <main className="pages need-approval">
          <div className="navigation">
-            <h1>Roomit Loans</h1>
+            <h1>Approvel Request</h1>
             <div className="container">
                <Link className="btn" to={"/admin/loans/make-loan"}>
                   <MdPostAdd className="icon" />

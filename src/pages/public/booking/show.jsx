@@ -1,12 +1,12 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import { fullDate } from "../../../_utilities/playDate";
 import ActivityHeader from "../../../components/public/ActivityHeader";
-import aula from "/aula.jpg";
+import { getImageUrl } from "../../../_services/rooms";
 
 export default function ShowBooking() {
    const { loans } = useOutletContext();
    const { slug } = useParams();
-   const loan = loans.find((loan) => loan.slug === slug);
+   const loan = loans.find((loan) => loan?.slug === slug);
 
    return (
       <main className="booking-show">
@@ -16,7 +16,7 @@ export default function ShowBooking() {
          />
          <div className="main">
             <div className="image">
-               <img src={aula} />
+               <img src={getImageUrl(loan?.room?.gambar)} />
             </div>
             <div className="detail">
                <table>
