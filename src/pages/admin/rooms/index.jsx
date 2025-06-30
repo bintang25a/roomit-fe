@@ -46,6 +46,7 @@ export default function Rooms() {
    const [modalShow, setModalShow] = useState(false);
    const [isEdit, setIsEdit] = useState(false);
    const [isAdd, setIsAdd] = useState(false);
+   const [kode, setKode] = useState("");
    const defaultForm = {
       kode_ruangan: "",
       nama: "",
@@ -75,6 +76,7 @@ export default function Rooms() {
          const room = rooms?.find(
             (room) => room?.kode_ruangan === kode_ruangan
          );
+         setKode(room?.kode_ruangan);
          setFormData({
             ...formData,
             ...room,
@@ -97,6 +99,7 @@ export default function Rooms() {
       setHasChange(false);
       setHasFile(false);
       setImagePreview(null);
+      setKode("");
    };
    const handleChange = (e) => {
       const { name, value, files } = e.target;
@@ -121,7 +124,6 @@ export default function Rooms() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       loading(true);
-      console.log(formData);
 
       try {
          const payload = new FormData();
@@ -130,10 +132,6 @@ export default function Rooms() {
          }
 
          if (isEdit) {
-            const kode = rooms.find(
-               (room) => room?.kode_ruangan === formData?.kode_ruangan
-            ).kode_ruangan;
-
             await updateRoom(kode, payload);
          } else {
             await createRoom(payload);
@@ -320,7 +318,7 @@ export default function Rooms() {
                               required
                               value={formData?.kode_ruangan}
                               onChange={handleChange}
-                              disabled={!isAdd}
+                              disabled
                            />
                         </div>
                      ) : null}

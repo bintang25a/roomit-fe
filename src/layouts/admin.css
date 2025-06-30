@@ -118,7 +118,7 @@
          box-shadow: 1px 1px 3px var(--secondary);
          position: sticky;
          top: 0;
-         z-index: 1000;
+         z-index: 800;
 
          .left-content {
             width: fit-content;
@@ -189,7 +189,7 @@
          position: fixed;
          left: 0;
          top: 0;
-         z-index: 1001;
+         z-index: 900;
          overflow: hidden;
       }
       .sidebar * {
@@ -256,7 +256,7 @@
             padding: var(--spx-8);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 800;
 
             .left-content {
                gap: var(--spx-8);

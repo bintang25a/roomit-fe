@@ -41,6 +41,7 @@ export default function Users() {
    // fungsi action: modal, edit, delete
    const [modalShow, setModalShow] = useState(false);
    const [isEdit, setIsEdit] = useState(false);
+   const [uid, setUid] = useState("");
    const defaultForm = {
       nama: "",
       uid: "",
@@ -53,7 +54,7 @@ export default function Users() {
    const [hasChange, setHasChange] = useState(false);
 
    const handleEdit = (uid) => {
-      const user = users.find((user) => user?.uid == uid);
+      const user = users?.find((user) => user?.uid == uid);
       setFormData({
          ...formData,
          ...user,
@@ -62,6 +63,7 @@ export default function Users() {
       setIsEdit(true);
       setModalShow(true);
       setHasChange(false);
+      setUid(user?.uid);
    };
    const handleOpen = (uid) => {
       const user = users?.find((user) => user?.uid === uid);
@@ -71,12 +73,14 @@ export default function Users() {
       });
       setModalShow(true);
       setHasChange(false);
+      setUid(user?.uid);
    };
    const handleClose = () => {
       setIsEdit(false);
       setModalShow(false);
       setFormData(defaultForm);
       setHasChange(false);
+      setUid("");
    };
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -90,7 +94,9 @@ export default function Users() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       loading(true);
-      const slug = users.find((user) => user.uid === formData.uid).slug;
+      const slug = users?.find(
+         (user) => String(user.uid) === String(uid)
+      )?.slug;
 
       try {
          await updateMember(slug, formData);
@@ -231,7 +237,7 @@ export default function Users() {
                            required
                            value={formData?.uid}
                            onChange={handleChange}
-                           disabled={!isEdit}
+                           disabled
                         />
                      </div>
                      <div className="input">

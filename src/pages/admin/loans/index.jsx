@@ -172,7 +172,6 @@ export default function Loans({ isAddSetting = false }) {
          setIsEdit(false);
          setIsAdd(false);
          loading(false);
-         setKode("");
          await confirm("Update loan successfully", true);
 
          if (isAddSetting) {
