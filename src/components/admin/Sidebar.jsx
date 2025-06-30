@@ -47,10 +47,12 @@ export default function Sidebar() {
                </div>
                <ul>
                   <li>
-                     <Link to={"/admin/loans/approve"}>Needs approval</Link>
+                     <Link to={"/admin/loans/needs-approve"}>
+                        Needs approval
+                     </Link>
                   </li>
                   <li>
-                     <Link to={"/admin/loans/approve"}>Make loan</Link>
+                     <Link to={"/admin/loans/make-loan"}>Make loan</Link>
                   </li>
                   <li>
                      <Link to={"/admin/users/profile"}>Profile</Link>

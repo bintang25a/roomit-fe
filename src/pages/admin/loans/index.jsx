@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { MdDelete, MdEdit, MdClose, MdSave, MdPostAdd } from "react-icons/md";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import {
@@ -9,7 +9,7 @@ import {
 } from "../../../_utilities/playDate";
 import { createLoan, deleteLoan, updateLoan } from "../../../_services/loans";
 
-export default function Loans() {
+export default function Loans({ isAddSetting = false }) {
    // ambil data dari parent
    const { users, rooms, loans, loading, confirm, fetchData } =
       useOutletContext();
@@ -40,7 +40,7 @@ export default function Loans() {
       setSearchTerm(search);
       setCurrentPage(1);
    };
-   const itemsPerPage = 6;
+   const itemsPerPage = 8;
    const scrollRef = useRef(null);
    const totalPages = Math.ceil(filteredLoans.length / itemsPerPage);
    const paginatedLoans = filteredLoans.slice(
@@ -81,6 +81,14 @@ export default function Loans() {
    const [formData, setFormData] = useState(defaultForm);
    const [hasChange, setHasChange] = useState(false);
    const [foreignChage, setForeignChange] = useState(false);
+   const navigate = useNavigate();
+
+   useEffect(() => {
+      if (isAddSetting) {
+         setModalShow(true);
+         setIsAdd(true);
+      }
+   }, [isAddSetting]);
 
    const handleEdit = (nomor_peminjaman) => {
       const loan = loans?.find(
@@ -121,6 +129,10 @@ export default function Loans() {
       setFormData(defaultForm);
       setHasChange(false);
       setKode("");
+
+      if (isAddSetting) {
+         navigate("/admin/loans", { replace: true });
+      }
    };
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -161,7 +173,11 @@ export default function Loans() {
          setIsAdd(false);
          loading(false);
          setKode("");
-         confirm("Update loan successfully", true);
+         await confirm("Update loan successfully", true);
+
+         if (isAddSetting) {
+            navigate("/admin/loans", { replace: true });
+         }
       } catch (error) {
          console.log(error);
          loading(false);
@@ -344,7 +360,10 @@ export default function Loans() {
                               disabled={!isEdit && !isAdd}
                            >
                               {rooms?.map((room) => (
-                                 <option value={room.kode_ruangan}>
+                                 <option
+                                    key={room.kode_ruangan}
+                                    value={room.kode_ruangan}
+                                 >
                                     {room.nama}
                                  </option>
                               ))}
@@ -362,7 +381,9 @@ export default function Loans() {
                               disabled={!isEdit && !isAdd}
                            >
                               {users?.map((user) => (
-                                 <option value={user.uid}>{user.nama}</option>
+                                 <option key={user.uid} value={user.uid}>
+                                    {user.nama}
+                                 </option>
                               ))}
                            </select>
                         </div>

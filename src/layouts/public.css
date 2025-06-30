@@ -105,4 +105,7 @@
          }
       }
    }
+   .desktop-handle.deactive {
+      display: none;
+   }
 }

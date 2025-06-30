@@ -128,7 +128,7 @@
             border-radius: var(--px-8);
 
             a,
-            button {
+            > button {
                aspect-ratio: 1/1;
                flex: 1;
                overflow: hidden;
@@ -144,7 +144,7 @@
                }
             }
             a:hover,
-            button:hover {
+            > button:hover {
                cursor: pointer;
                .icon {
                   background-color: var(--secondary);

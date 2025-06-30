@@ -29,6 +29,7 @@ import Dashboard from "./pages/admin";
 import UsersAdmin from "./pages/admin/users";
 import RoomsAdmin from "./pages/admin/rooms";
 import LoansAdmin from "./pages/admin/loans";
+import NeedsApproval from "./pages/admin/loans/needsApproval";
 
 export default function App() {
    return (
@@ -76,8 +77,14 @@ export default function App() {
             >
                <Route index element={<Dashboard />} />
                <Route path="users" element={<UsersAdmin />} />
+               <Route path="users/profile" element={<Profile />} />
                <Route path="rooms" element={<RoomsAdmin />} />
                <Route path="loans" element={<LoansAdmin />} />
+               <Route
+                  path="loans/make-loan"
+                  element={<LoansAdmin isAddSetting={true} />}
+               />
+               <Route path="loans/needs-approve" element={<NeedsApproval />} />
             </Route>
          </Routes>
       </BrowserRouter>

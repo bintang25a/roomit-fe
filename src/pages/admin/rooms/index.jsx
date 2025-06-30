@@ -26,7 +26,7 @@ export default function Rooms() {
       setSearchTerm(search);
       setCurrentPage(1);
    };
-   const itemsPerPage = 6;
+   const itemsPerPage = 8;
    const totalPages = Math.ceil(filteredRooms.length / itemsPerPage);
    const paginatedRooms = filteredRooms.slice(
       (currentPage - 1) * itemsPerPage,

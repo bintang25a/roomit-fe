@@ -13,6 +13,8 @@ export default function PublicLayout() {
    const { confirm, ConfirmDialog } = useConfirmDialog();
    const { loading, LoadingSpinner } = useLoadingSpinner();
 
+   // const currentPath = location.pathname;
+
    const navigate = useNavigate();
    const [users, setUsers] = useState([]);
    const [user, setUser] = useState({});
