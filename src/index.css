@@ -167,11 +167,23 @@
 }
 
 @media screen and (min-width: 769px) {
-   .confirm-overlay .confirm-box .loading {
-      width: var(--px-64);
-      height: var(--px-64);
-      border: var(--px-8) solid var(--gray-100);
-      border-top: var(--px-8) solid var(--secondary);
+   .confirm-overlay .confirm-box {
+      font-size: var(--rfs-2);
+
+      .loading {
+         width: var(--px-64);
+         height: var(--px-64);
+         border: var(--px-8) solid var(--gray-100);
+         border-top: var(--px-8) solid var(--secondary);
+      }
+
+      p {
+         font-size: var(--rfs-4);
+      }
+
+      .confirm-buttons button {
+         font-size: var(--rfs-3);
+      }
    }
 }
 

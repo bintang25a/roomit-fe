@@ -533,6 +533,7 @@
             aspect-ratio: 1/1;
             height: auto;
             width: var(--px-40);
+            font-size: var(--rfs-4);
             border-radius: var(--px-8);
             background-color: var(--gray-200);
             border: calc(var(--px-8) / 4) solid var(--primary);
