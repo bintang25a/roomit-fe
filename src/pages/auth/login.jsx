@@ -52,7 +52,7 @@ export default function Login() {
          <div className="logo">
             <img src={logo} alt="" />
          </div>
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} autoComplete="new-password">
             <div className="container">
                <div className="input">
                   <input
@@ -68,13 +68,13 @@ export default function Login() {
                </div>
                <div className="input">
                   <input
-                     type="current-password"
+                     type="password"
                      name="password"
                      id="password"
                      placeholder="password"
                      onChange={handleChange}
                      value={loginData.password}
-                     autoComplete="off"
+                     autoComplete="new-password"
                      required
                   />
                </div>

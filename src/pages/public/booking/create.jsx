@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { createLoan } from "../../../_services/loans";
-import { numberDateLocale } from "../../../_utilities/playDate";
+import {
+   compareTime,
+   countdown,
+   fullDate,
+   numberDateLocale,
+} from "../../../_utilities/playDate";
 import ActivityHeader from "../../../components/public/ActivityHeader";
 
 export default function AddBooking() {
@@ -40,6 +45,15 @@ export default function AddBooking() {
       const id_peminjam = user?.uid;
       const tanggal_pengajuan = new Date();
       const progres = "onprogres";
+
+      if (
+         fullDate(tanggal_pengajuan) === fullDate(formData.tanggal_pemakaian) ||
+         countdown(formData.tanggal_pemakaian) === "over" ||
+         !compareTime(formData.waktu_mulai, formData.waktu_selesai)
+      ) {
+         loading(false);
+         return confirm("Tanggal/Waktu pemakaian tidak sesuai", false);
+      }
 
       let nomor_peminjaman;
       let kode_ruangan;

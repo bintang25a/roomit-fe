@@ -278,7 +278,7 @@ export default function Users() {
                      </div>
                      <div className="input">
                         <label htmlFor="role">Status</label>
-                        <input
+                        <select
                            type="text"
                            name="role"
                            id="role"
@@ -286,7 +286,11 @@ export default function Users() {
                            value={formData?.role}
                            onChange={handleChange}
                            disabled={!isEdit}
-                        />
+                        >
+                           <option value="mahasiswa">Mahasiswa</option>
+                           <option value="dosen">Dosen</option>
+                           <option value="admin">Admin</option>
+                        </select>
                      </div>
                      <div className="input">
                         <label htmlFor="password">Change Password</label>

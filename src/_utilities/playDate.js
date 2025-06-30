@@ -76,6 +76,16 @@ export const countdown = (targetDate) => {
    return `${hari} hari, ${jam} jam, ${menit} menit`;
 };
 
+export const compareTime = (before, after) => {
+   const [h1, m1] = before.split(":").map(Number);
+   const [h2, m2] = after.split(":").map(Number);
+
+   const minuteBefore = h1 * 60 + m1;
+   const minuteAfter = h2 * 60 + m2;
+
+   return minuteBefore < minuteAfter;
+};
+
 export const greetings = () => {
    const now = new Date();
    const hour = now.getHours();

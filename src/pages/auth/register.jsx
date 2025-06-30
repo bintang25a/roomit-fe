@@ -122,7 +122,7 @@ export default function Register() {
                      placeholder="password"
                      onChange={handleChange}
                      value={formData.password}
-                     autoComplete="off"
+                     autoComplete="new-password"
                      required
                   />
                </div>

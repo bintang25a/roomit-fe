@@ -11,7 +11,7 @@ export default function Schedule() {
 
    return (
       <main className="schedule">
-         <ActivityHeader head={"Rooms schedule"} desc={"Check all schedule"} />
+         <ActivityHeader head={"My schedule"} desc={"Check my schedule"} />
          <div className="main">
             <div className="room-list">
                <h1>Event list</h1>
