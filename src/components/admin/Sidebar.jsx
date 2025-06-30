@@ -55,7 +55,7 @@ const Sidebar = forwardRef(({ isOpen, setIsOpen }, ref) => {
                <ul>
                   <li onClick={() => setIsOpen(false)}>
                      <Link to={"/admin/loans/needs-approve"}>
-                        Needs approval
+                        Detail Request
                      </Link>
                   </li>
                   <li onClick={() => setIsOpen(false)}>

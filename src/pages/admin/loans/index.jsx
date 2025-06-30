@@ -332,7 +332,7 @@ export default function Loans({ isAddSetting = false }) {
             <div className="modals">
                <form onSubmit={handleSubmit}>
                   <div className="container loans">
-                     <h1>Data rooms</h1>
+                     <h1>Data loans</h1>
                      <div className="column">
                         <div className="input">
                            <label htmlFor="nomor_peminjaman">

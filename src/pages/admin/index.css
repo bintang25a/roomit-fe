@@ -252,7 +252,7 @@
 
 .admin-layout .modals {
    width: 100%;
-   height: 100%;
+   height: 100lvh;
    top: 0;
    left: 0;
    position: fixed;
@@ -280,6 +280,9 @@
       .column {
          flex: 1;
          max-width: 50%;
+         display: flex;
+         flex-direction: column;
+         gap: var(--spx-12);
       }
 
       > h1 {
@@ -1056,7 +1059,7 @@
 
          > h1 {
             padding-left: var(--spx-8);
-            font-size: var(--rfs-5);
+            font-size: var(--fs-5);
          }
 
          > .left-content {
@@ -1080,15 +1083,15 @@
                border-radius: var(--spx-8);
 
                h1 {
-                  font-size: var(--rfs-8);
+                  font-size: var(--fs-8);
                }
 
                h2 {
-                  font-size: var(--rfs-3);
+                  font-size: var(--fs-3);
                }
 
                h3 {
-                  font-size: var(--rfs-3);
+                  font-size: var(--fs-3);
                }
             }
          }
@@ -1100,7 +1103,7 @@
 
          > h1 {
             padding-left: var(--spx-8);
-            font-size: var(--rfs-5);
+            font-size: var(--fs-5);
          }
 
          table {
@@ -1130,7 +1133,7 @@
                td,
                th {
                   padding: calc(var(--spx-8) / 2);
-                  font-size: var(--rfs-2);
+                  font-size: var(--fs-2);
                   text-align: center;
                }
 
@@ -1149,7 +1152,7 @@
             td,
             th {
                padding: calc(var(--spx-8) / 2);
-               font-size: var(--rfs-2);
+               font-size: var(--fs-2);
             }
 
             tfoot tr.footer td {
@@ -1170,14 +1173,14 @@
          border: calc(var(--spx-8) / 5) solid var(--primary);
 
          > h1 {
-            font-size: var(--rfs-4);
+            font-size: var(--fs-4);
          }
 
          .input.gambar {
             label {
                aspect-ratio: 16/9;
                width: calc(var(--spx-128) * 1.5);
-               font-size: var(--rfs-3);
+               font-size: var(--fs-3);
                padding: var(--spx-8);
                border-radius: var(--spx-8);
             }
@@ -1187,13 +1190,14 @@
             min-width: calc(var(--spx-64) * 1.5);
 
             label {
-               font-size: var(--rfs-2);
+               font-size: var(--fs-2);
             }
 
             input,
             select {
                padding: var(--spx-8);
                border-radius: var(--spx-8);
+               font-size: var(--fs-3);
             }
             input:focus,
             select:focus {
@@ -1207,7 +1211,7 @@
             .btn {
                aspect-ratio: 1/1;
                padding: var(--spx-8);
-               font-size: var(--rfs-4);
+               font-size: var(--fs-4);
                border-radius: var(--spx-8);
             }
             .btn.edit {
@@ -1235,7 +1239,7 @@
 
          h1 {
             min-width: fit-content;
-            font-size: var(--rfs-4);
+            font-size: var(--fs-3);
             padding: 0 var(--spx-8);
             text-shadow: 0px 0px 1px var(--primary);
             border-bottom-right-radius: var(--spx-8);
@@ -1248,19 +1252,20 @@
 
          .btn {
             width: var(--spx-24);
+            font-size: var(--fs-3);
             margin-right: var(--spx-8);
             border-bottom: calc(var(--spx-8) / 6) solid var(--primary);
             border-right: calc(var(--spx-8) / 6) solid var(--primary);
          }
 
          input {
-            min-width: var(--spx-64);
-            width: fit-content;
+            min-width: var(--spx-32);
+            flex: 1;
             padding-left: var(--spx-8);
             border-radius: var(--spx-8);
             border-bottom: calc(var(--spx-8) / 6) solid var(--primary);
             border-right: calc(var(--spx-8) / 6) solid var(--primary);
-            font-size: var(--rfs-2);
+            font-size: var(--fs-2);
          }
          input:focus {
             box-shadow: 0 0 var(--spx-8) var(--primary);
@@ -1272,7 +1277,7 @@
             gap: var(--spx-16);
 
             .btn {
-               font-size: var(--rfs-3);
+               font-size: var(--fs-3);
                padding: calc(var(--spx-8) / 4) var(--spx-12);
                border-radius: var(--spx-8);
             }
@@ -1284,7 +1289,7 @@
             border-radius: var(--spx-8);
 
             h1 {
-               font-size: var(--rfs-3);
+               font-size: var(--fs-3);
             }
 
             .icon {
@@ -1313,7 +1318,7 @@
 
          tr td,
          tr th {
-            font-size: var(--rfs-3);
+            font-size: var(--fs-3);
             padding: calc(var(--spx-8) / 2);
          }
          tr td {
@@ -1350,6 +1355,7 @@
          tr td,
          tr th {
             padding: calc(var(--spx-8) / 2);
+            font-size: var(--fs-3);
          }
          tr td {
             border-bottom: calc(var(--spx-8) / 8) solid var(--primary);
@@ -1380,6 +1386,7 @@
       table {
          tr td,
          tr th {
+            font-size: var(--fs-3);
             padding: calc(var(--spx-8) / 2);
          }
          tr td {
@@ -1409,6 +1416,7 @@
             border-radius: var(--spx-8);
             border-bottom: calc(var(--spx-8) / 6) solid var(--primary);
             border-right: calc(var(--spx-8) / 6) solid var(--primary);
+            font-size: var(--fs-3);
          }
 
          > .container {
@@ -1430,7 +1438,7 @@
                min-width: 45%;
 
                h1 {
-                  font-size: var(--rfs-2);
+                  font-size: var(--fs-2);
                }
             }
          }
@@ -1449,14 +1457,14 @@
             gap: var(--spx-8);
 
             > h1 {
-               font-size: var(--rfs-4);
+               font-size: var(--fs-4);
                border-radius: calc(var(--spx-8) / 3);
                border-bottom: calc(var(--spx-8) / 6) solid var(--gray-800);
             }
 
             .list {
                h1 {
-                  font-size: var(--rfs-4);
+                  font-size: var(--fs-4);
                }
             }
          }
@@ -1482,7 +1490,7 @@
                width: 100%;
 
                td {
-                  font-size: calc(var(--rfs-2) * 1);
+                  font-size: calc(var(--fs-2) * 1);
                }
             }
 
@@ -1496,6 +1504,7 @@
                   padding: calc(var(--spx-8) / 4) var(--spx-8);
                   border-radius: calc(var(--spx-8) / 2);
                   color: var(--gray-100);
+                  font-size: var(--fs-2);
                }
             }
          }
@@ -1506,8 +1515,18 @@
       gap: var(--spx-32);
       padding: var(--spx-64) var(--spx-32) var(--spx-128) var(--spx-32);
 
-      .header img {
-         width: 40%;
+      .header {
+         h1 {
+            font-size: var(--fs-6);
+         }
+
+         img {
+            width: 40%;
+         }
+
+         h2 {
+            font-size: var(--fs-5);
+         }
       }
 
       .main {
@@ -1516,8 +1535,18 @@
          gap: var(--spx-16);
          border-radius: var(--spx-12);
 
+         .row {
+            h1 {
+               font-size: var(--fs-4);
+            }
+
+            h2 {
+               font-size: var(--fs-4);
+               color: var(--gray-700);
+            }
+         }
          .row:nth-child(3) h2 {
-            font-size: var(--rfs-3);
+            font-size: var(--fs-3);
          }
       }
 
@@ -1527,6 +1556,7 @@
          .btn {
             width: var(--spx-128);
             padding: var(--spx-8) var(--spx-32);
+            font-size: var(--fs-4);
             border-radius: var(--spx-12);
          }
       }

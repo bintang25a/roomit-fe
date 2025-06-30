@@ -12,10 +12,10 @@ export default function Navbar() {
          <Link to={"/"}>
             <MdHome />
          </Link>
-         <Link to={"/schedule"}>
+         <Link to={"/calendar"}>
             <MdCalendarToday />
          </Link>
-         <Link to={"/submited-request"}>
+         <Link to={"/schedule"}>
             <MdAccessTime />
          </Link>
          <Link to={"/profile"}>

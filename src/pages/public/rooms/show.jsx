@@ -1,6 +1,6 @@
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import ActivityHeader from "../../../components/public/ActivityHeader";
-import aula from "/aula.jpg";
+import { getImageUrl } from "../../../_services/rooms";
 
 export default function ShowRoom() {
    const { rooms } = useOutletContext();
@@ -9,10 +9,10 @@ export default function ShowRoom() {
 
    return (
       <main className="room-show">
-         <ActivityHeader head={"Aula Djoeanda"} desc={"Gedung A Lantai 2"} />
+         <ActivityHeader head={room?.nama} desc={"Gedung " + room?.gedung} />
          <div className="main">
             <div className="image">
-               <img src={aula} alt="" />
+               <img src={getImageUrl(room?.gambar)} alt="" />
             </div>
             <div className="detail">
                <table>
@@ -35,7 +35,9 @@ export default function ShowRoom() {
                      <tr>
                         <td>Ketersediaan</td>
                         <td>:</td>
-                        <td>Cek kalender event</td>
+                        <td>
+                           <Link to={"/calendar"}>Cek kalender event</Link>
+                        </td>
                      </tr>
                   </tbody>
                </table>

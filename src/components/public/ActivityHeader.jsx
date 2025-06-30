@@ -4,7 +4,7 @@ export default function ActivityHeader({ head, desc }) {
    return (
       <header className="header">
          <div className="logo">
-            <img src={logo} alt="" />
+            <img src={logo} />
          </div>
          <div className="activity">
             <h1>{head}</h1>

@@ -19,10 +19,10 @@ export default function Navbar({ user, fetchData, handleOpen }) {
                <MdMenu className="icon" />
             </button>
          </div>
-         <div className="right-content">
+         <Link to={"/admin/users/profile"} className="right-content">
             <h1>{user?.nama}</h1>
             <img src={profileLogo} />
-         </div>
+         </Link>
       </nav>
    );
 }

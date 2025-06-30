@@ -8,7 +8,7 @@ import SubmitedRequest from "./pages/public/activity/submitedRequest";
 import ApprovalStatus from "./pages/public/activity/approvalStatus";
 import BookedItem from "./pages/public/activity/bookedItem";
 import BookedRoom from "./pages/public/activity/bookedRoom";
-import Schedule from "./pages/public/navigation/schedule";
+import MyCalendar from "./pages/public/navigation/calendar";
 import Profile from "./pages/public/navigation/profile";
 
 //import room pages
@@ -30,6 +30,7 @@ import UsersAdmin from "./pages/admin/users";
 import RoomsAdmin from "./pages/admin/rooms";
 import LoansAdmin from "./pages/admin/loans";
 import NeedsApproval from "./pages/admin/loans/needsApproval";
+import Schedule from "./pages/public/navigation/schedule";
 
 export default function App() {
    return (
@@ -51,6 +52,7 @@ export default function App() {
                <Route path="approval-status" element={<ApprovalStatus />} />
                <Route path="booked-room" element={<BookedRoom />} />
                <Route path="booked-item" element={<BookedItem />} />
+               <Route path="calendar" element={<MyCalendar />} />
                <Route path="schedule" element={<Schedule />} />
                <Route path="profile" element={<Profile />} />
 

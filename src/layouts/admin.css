@@ -1,6 +1,6 @@
 .admin-layout {
    width: 100%;
-   min-height: 100svh;
+   min-height: 100lvh;
    position: relative;
    display: flex;
    align-items: flex-start;
@@ -99,7 +99,7 @@
 
    > .right-content {
       width: 80vw;
-      min-height: 100svh;
+      min-height: 100lvh;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -107,14 +107,14 @@
 
       > .navbar {
          width: 100%;
-         min-height: 64px;
-         height: var(--px-64);
+         min-height: 32px;
+         height: fit-content;
+         padding: var(--px-8) var(--px-32);
          background-color: var(--gray-100);
          overflow: hidden;
          display: flex;
          justify-content: space-between;
          align-items: center;
-         padding: var(--px-8) var(--px-32);
          box-shadow: 1px 1px 3px var(--secondary);
          position: sticky;
          top: 0;
@@ -135,7 +135,6 @@
                aspect-ratio: 1/1;
                flex: 1;
                overflow: hidden;
-               transition: 0.3s ease;
 
                .icon {
                   width: 100%;
@@ -199,7 +198,7 @@
       }
       .sidebar.active {
          width: 64svw;
-         height: 100svh;
+         height: 100lvh;
          display: flex;
 
          .top-content {
@@ -217,6 +216,11 @@
 
                .header {
                   gap: var(--spx-8);
+                  font-size: var(--fs-4);
+
+                  .icon {
+                     font-size: var(--fs-5);
+                  }
                }
 
                ul {
@@ -224,12 +228,20 @@
                   padding-bottom: var(--spx-16);
                   padding-left: var(--spx-40);
                   gap: calc(var(--spx-8) / 2);
+
+                  li {
+                     font-size: var(--fs-3);
+                  }
                }
             }
          }
 
          .bottom-content {
             padding: var(--spx-8) 0;
+
+            h1 {
+               font-size: calc(var(--fs-1) * 1.5);
+            }
          }
       }
 
@@ -256,7 +268,7 @@
                   display: none;
 
                   .icon {
-                     font-size: var(--rfs-6);
+                     font-size: var(--fs-6);
                      border-radius: var(--spx-8);
                   }
                }
@@ -269,7 +281,7 @@
                gap: var(--spx-8);
 
                h1 {
-                  font-size: var(--rfs-3);
+                  font-size: var(--fs-3);
                }
 
                img {
